@@ -13,4 +13,10 @@ class ProductController extends Controller
         $products = Product::inRandomOrder()->take(8)->get();
         return view('structure.produit')->with('products',$products);
     }
+
+    public function show($slug)
+    {
+        $product = Product::where('slug',$slug)->first();
+        return view('structure.affichage_produit')->with('product', $product);
+    }
 }
