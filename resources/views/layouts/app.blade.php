@@ -34,15 +34,25 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('structure.presentation') }}">Présentation</a>
                     </li>
+                    @can('access-product')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('structure.produit') }}">Produits</a>
+                    </li>
+                    @elsecan('access-service')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('structure.service') }}">Services</a>
+                    </li>
+                    @endcan
+                    @can('edit-users')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('structure.produit') }}">Produits</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('structure.service') }}">Services</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.devis') }}">Devis</a>
-                    </li>
+                    @endcan
+                    
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('structure.contact') }}">Contact</a>
                     </li>
