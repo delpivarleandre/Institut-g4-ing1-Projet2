@@ -25,6 +25,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
     Route::resource('users', 'UsersController');
 });
 
+
 Route::get('/', function () {
     return view('structure.landing');
 });
@@ -47,10 +48,15 @@ Route::get('/devis', function () {
     return view('structure.devis');
 })->name('structure.devis');
 
-Route::get('/panier', function () {
-    return view('structure.panier');
-})->name('structure.panier');
+Route::get('/panier', 'PanierController@index')->name('structure.panier');
 
+Route::post("/panier/ajouter", 'PanierController@store')->name('panier.store');
+
+Route::delete('/panier/{rowId}', 'PanierController@destroy')->name('panier.destroy');;
+
+Route::get('/videpanier', function () {
+    Cart::destroy();
+});
 
 
 
@@ -64,4 +70,3 @@ Route::get('/dashboard', function () {
 })->name('dashboard'); //Attention Dashboard !!!
 
 Auth::routes();
-
