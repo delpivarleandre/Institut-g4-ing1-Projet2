@@ -29,29 +29,43 @@ class UsersTableSeeder extends Seeder
 
         ]);
 
-        $utilisateur = User::create([
+        $vendeur = User::create([
 
-            'name'=> 'utilisateur',
-            'email'=> 'utilisateur@utilisateur.com',
+            'name'=> 'vendeur',
+            'email'=> 'vendeur@vendeur.com',
             'password'=>Hash::make('password')
 
         ]);
 
-        $auteur = User::create([
+        $professionnelle = User::create([
 
-            'name'=> 'auteur',
-            'email'=> 'auteur@auteur.com',
+            'name'=> 'professionnelle',
+            'email'=> 'professionnelle@pro.com',
             'password'=>Hash::make('password')
 
         ]);
 
+        $particulier = User::create([
+
+            'name'=> 'particulier',
+            'email'=> 'particulier@par.com',
+            'password'=>Hash::make('password')
+
+        ]);
+
+
+        
         $adminRole = Role::where('name', 'admin')->first();
-        $utilisateurRole = Role::where('name', 'utilisateur')->first();
-        $auteurRole = Role::where('name', 'auteur')->first();
+        $vendeurRole = Role::where('name', 'vendeur')->first();
+        $professionelleRole = Role::where('name', 'professionnelle')->first();
+        $particulierRole = Role::where('name', 'particulier')->first();
+        
 
         $admin->roles()->attach($adminRole);
-        $utilisateur->roles()->attach($utilisateurRole);
-        $auteur->roles()->attach($auteurRole);
+        $vendeur->roles()->attach($vendeurRole);
+        $professionnelle->roles()->attach($professionelleRole);
+        $particulier->roles()->attach($particulierRole);
+       
 
 
     }
