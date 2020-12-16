@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/produit', 'App\Http\Controllers\ProductController@index')->name('structure.produit');
-Route::get('/produit/{slug}', 'App\Http\Controllers\ProductController@show')->name('structure.affichage_produit');
+Route::get('/produit', 'ProductController@index')->name('structure.produit');
+Route::get('/produit/{slug}', 'ProductController@show')->name('structure.affichage_produit');
 
 Route::get('/', function () {
     return view('structure.landing');

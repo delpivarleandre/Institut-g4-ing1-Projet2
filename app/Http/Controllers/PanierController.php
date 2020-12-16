@@ -47,7 +47,7 @@ class PanierController extends Controller
         $product = Product::find($request->product_id);
 
         Cart::add($product->id, $product->title, 1, $product->price)
-            ->associate('App\Product');
+            ->associate('App\Models\Product');
         return redirect()->route('structure.produit')->with('success', 'Le produit a bien été ajouté.');
     }
 
