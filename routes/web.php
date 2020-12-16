@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\UsersController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/produit', 'ProductController@index')->name('structure.produit');
+Route::get('/produit/{slug}', 'ProductController@show')->name('structure.affichage_produit');
+
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
+    Route::resource('users', 'UsersController');
+});
+
 
 Route::get('/', function () {
     return view('structure.landing');
@@ -29,17 +42,22 @@ Route::get('/service', function () {
     return view('structure.service');
 })->name('structure.service');
 
-Route::get('/produit', function () {
-    return view('structure.produit');
-})->name('structure.produit');
+
 
 Route::get('/devis', function () {
     return view('structure.devis');
 })->name('structure.devis');
 
-Route::get('/panier', function () {
-    return view('structure.panier');
-})->name('structure.panier');
+Route::get('/panier', 'PanierController@index')->name('structure.panier');
+
+Route::post("/panier/ajouter", 'PanierController@store')->name('panier.store');
+
+Route::delete('/panier/{rowId}', 'PanierController@destroy')->name('panier.destroy');;
+
+Route::get('/videpanier', function () {
+    Cart::destroy();
+});
+
 
 
 
@@ -52,4 +70,3 @@ Route::get('/dashboard', function () {
 })->name('dashboard'); //Attention Dashboard !!!
 
 Auth::routes();
-
