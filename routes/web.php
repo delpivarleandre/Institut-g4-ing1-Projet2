@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\UsersController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/produit', 'ProductController@index')->name('structure.produit');
 Route::get('/produit/{slug}', 'ProductController@show')->name('structure.affichage_produit');
+
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
+    Route::resource('users', 'UsersController');
+});
+
 
 Route::get('/', function () {
     return view('structure.landing');

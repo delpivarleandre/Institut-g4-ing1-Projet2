@@ -81,12 +81,14 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                    @can('manage-users')
+                                    <a href="{{route('admin.users.index')}}" class="dropdown-item">Liste des utilisateurs</a>
+                                    @endcan
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                 </div>
