@@ -30,13 +30,7 @@
             @enderror
         </div>
 
-        <div class="form-group">
-            <label for="slug">Slug de l'article : </label>
-            <input type="text" class="form-control @error('slug') is-invalid @enderror" name="slug" id="slug"></input>
-            @error('slug')
-            <div class="invalid-feedback">{{$errors->first('slug')}}</div>
-            @enderror
-        </div>
+    
         <button type="submit" class="btn btn-primary"> Ajouter l'article au catalogue </button>  
     </form> 
 </div>

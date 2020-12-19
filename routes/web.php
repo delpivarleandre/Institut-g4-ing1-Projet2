@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\UsersController;
 
@@ -16,7 +17,9 @@ use App\Http\Controllers\Admin\UsersController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//-----------------------------------Commentaire---------------------------------------
+Route::post('comments/{product}','CommentController@store')->name('comments.store');
+//-----------------------------------------------------------------------------------
 
 //-----------------------------------Acceuil---------------------------------------
 Route::get('/', function () {
@@ -40,9 +43,9 @@ Auth::routes();
 //Affichage du catalogue des produits
 Route::get('/produit', 'ProductController@index')->name('structure.produit');
 //Affichage d'un produit
-Route::get('/produit/{slug}', 'ProductController@show')->name('structure.affichage_produit');
+Route::get('/produit/{product}', 'ProductController@show')->name('structure.affichage_produit');
 //Affichage de la gestion de articles (vendeur, admin)
-Route::get('/gestionsarticle', 'ProductController@gestion_article_index')->name('admin.produits.index');
+Route::get('/gestionsarticle', 'ProductController@gestion_article_index')->name('admin.produits.index')->middleware('auth');
 //Affichage de la vue pour créer des articles
 Route::get('/gestionsarticle/ajouter', 'ProductController@gestion_article_ajouter')->name('admin.produits.ajouter');
 //Route pour supprimer et editer les articles

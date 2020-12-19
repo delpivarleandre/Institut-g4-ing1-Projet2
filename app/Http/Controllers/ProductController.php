@@ -3,22 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-
+use App\Models\Comment;
 
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $products = Product::all();
         return view('structure.produit')->with('products', $products);
     }
 
-    public function show($slug)
+    public function show(Product $product)
     {
-        $product = Product::where('slug', $slug)->firstOrFail();
-        return view('structure.affichage_produit')->with('product', $product);
+        return view('structure.affichage_produit',compact('product'));
     }
 
     public function gestion_article_index()
@@ -38,8 +43,7 @@ class ProductController extends Controller
         $data= $request->validate([
             'title' =>'required|min:1',
             'image'=>'required|min:1',
-            'price'=>'required',
-            'slug'=>'required'
+            'price'=>'required'
 
         ]);
 

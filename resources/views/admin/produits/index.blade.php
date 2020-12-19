@@ -23,7 +23,7 @@
                         <td>{{$product->title}}</td>
                         <td>{{$product->getPrice()}}</td>
                         <td>
-                            <a href="{{route('structure.affichage_produit', $product->slug)}}" class=" btn btn-primary">Voir</a>
+                            <a href="{{route('structure.affichage_produit', $product)}}" class=" btn btn-primary">Voir</a>
                             <a href="#" class=" btn btn-warning">Edit</a>
                             <form action="{{route('product.destroy', $product)}}" method="POST" class="d-inline">
                                 @csrf
