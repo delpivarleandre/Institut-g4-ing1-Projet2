@@ -48,6 +48,8 @@ Route::get('/produit/{product}', 'ProductController@show')->name('structure.affi
 Route::get('/gestionsarticle', 'ProductController@gestion_article_index')->name('admin.produits.index')->middleware('auth');
 //Affichage de la vue pour créer des articles
 Route::get('/gestionsarticle/ajouter', 'ProductController@gestion_article_ajouter')->name('admin.produits.ajouter');
+//Affichage de la vue pour modifier des articles
+Route::get('/gestionsarticle/modifier/{product}', 'ProductController@gestion_article_editer')->name('admin.produits.editer');
 //Route pour supprimer et editer les articles
 Route::resource('product', 'ProductController');
 //-----------------------------------------------------------------------------------

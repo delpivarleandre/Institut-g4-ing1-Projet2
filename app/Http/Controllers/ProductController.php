@@ -37,6 +37,11 @@ class ProductController extends Controller
         return view('admin.produits.ajouter');
     }
 
+    public function gestion_article_editer(Product $product)
+    {
+        return view('admin.produits.editer', compact('product'));
+    }
+
 
     public function store(Request $request)
     {
@@ -60,6 +65,20 @@ class ProductController extends Controller
         return redirect('/gestionsarticle');
     }
 
+    public function update(Request $request, Product $product)
+    {
+
+        $data= $request->validate([
+            'title' =>'required|min:5',
+            'image'=>'required|min:1',
+            'price'=>'required|min:1'
+
+        ]);
+            
+        $product->update($data);
+
+        return redirect()->route('admin.produits.index');
+    }
 
 
 }
