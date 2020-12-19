@@ -26,9 +26,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 });
 
 
-Route::get('/', function () {
-    return view('structure.landing');
-});
 
 Route::get('/presentation', function () {
     return view('structure.presentation');
@@ -61,7 +58,7 @@ Route::get('/videpanier', function () {
 
 
 
-Route::get('/acceuil', function () {
+Route::get('/', function () {
     return view('structure.acceuil');
 })->name('structure.acceuil');
 
