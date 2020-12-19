@@ -16,6 +16,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ae6899135a.js" crossorigin="anonymous"></script>
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -86,17 +88,22 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('dashboard') }}">Mes commandes</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                                @cannot('edit-users')
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}">Mes commandes</a>
+                                @endcannot
+                                @can('manage-users')
+                                    <a href="{{route('admin.users.index')}}" class="dropdown-item">Liste des utilisateurs</a>
+                                @endcan
+                                @can('edit-users')
+                                    <a href="{{route('admin.produits.ajouter')}}" class="dropdown-item">Ajouter des articles</a>
+                                    <a href="{{route('admin.produits.index')}}" class="dropdown-item">Gestion des articles</a>
+                                @endcan
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Déconnexion</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                    @can('manage-users')
-                                    <a href="{{route('admin.users.index')}}" class="dropdown-item">Liste des utilisateurs</a>
-                                    @endcan
+
                                 </div>
                             </li>
                         @endguest
