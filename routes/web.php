@@ -21,7 +21,7 @@ Route::get('/produit', 'ProductController@index')->name('structure.produit');
 Route::get('/produit/{slug}', 'ProductController@show')->name('structure.affichage_produit');
 
 
-Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function () {
     Route::resource('users', 'UsersController');
 });
 
@@ -42,7 +42,7 @@ Route::get('/service', function () {
     return view('structure.service');
 })->name('structure.service');
 
-
+Route::get('/paiement', 'CheckoutController@index')->name('structure.paiement');
 
 Route::get('/devis', function () {
     return view('structure.devis');

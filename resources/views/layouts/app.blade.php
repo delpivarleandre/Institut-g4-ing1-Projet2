@@ -21,6 +21,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    @yield('extra-script')
 </head>
 
 <body>
@@ -51,8 +53,8 @@
                         <a class="nav-link" href="{{ route('structure.service') }}">Services</a>
                     </li>
                     @endcan
-                    
-                    
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('structure.contact') }}">Contact</a>
                     </li>
@@ -91,14 +93,14 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                    @can('manage-users')
-                                    <a href="{{route('admin.users.index')}}" class="dropdown-item">Liste des utilisateurs</a>
-                                    @endcan
-                                </div>
-                            </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                @can('manage-users')
+                                <a href="{{route('admin.users.index')}}" class="dropdown-item">Liste des utilisateurs</a>
+                                @endcan
+                            </div>
+                        </li>
                         @endguest
                     </ul>
                 </div>
@@ -115,6 +117,7 @@
             @yield('content')
         </main>
     </div>
+    @yield('extra-js')
 </body>
 
 </html>
