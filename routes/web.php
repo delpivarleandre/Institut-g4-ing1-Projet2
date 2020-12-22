@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\UsersController;
 
 
@@ -17,6 +18,10 @@ use App\Http\Controllers\Admin\UsersController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//--------------------------------------Paiement-----------------------------------------------
+Route::get('/paiement','CheckoutController@index')->name('checkout.index');
+//---------------------------------------------------------------------------------------------
 //-----------------------------------Commentaire---------------------------------------
 Route::post('comments/{product}','CommentController@store')->name('comments.store');
 //-----------------------------------------------------------------------------------
@@ -92,3 +97,5 @@ Route::get('/service', function () {
     return view('structure.service');
 })->name('structure.service');
 //-----------------------------------------------------------------------------------------------
+
+
