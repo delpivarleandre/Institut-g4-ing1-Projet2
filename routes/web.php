@@ -21,6 +21,11 @@ use App\Http\Controllers\Admin\UsersController;
 
 //--------------------------------------Paiement-----------------------------------------------
 Route::get('/paiement','CheckoutController@index')->name('checkout.index');
+Route::post('/paiement','CheckoutController@store')->name('checkout.store');
+Route::get('/merci', function(){
+    return view('checkout.thankyou');
+});
+
 //---------------------------------------------------------------------------------------------
 //-----------------------------------Commentaire---------------------------------------
 Route::post('comments/{product}','CommentController@store')->name('comments.store');

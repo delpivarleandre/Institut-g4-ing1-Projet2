@@ -17,20 +17,22 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        Stripe::setApiKey('sk_test_51I0wFvAEUallKK3arCyv7FvOzNMo8BoZZzymOYUsi8Kea3j2rEhtaQS6E2pwCe5uLQZLGLu5LIqdAFPNXkRGfFcG00B3TfP21G');
+      // Enter Your Stripe Secret
+      Stripe::setApiKey('sk_test_51I0wFvAEUallKK3arCyv7FvOzNMo8BoZZzymOYUsi8Kea3j2rEhtaQS6E2pwCe5uLQZLGLu5LIqdAFPNXkRGfFcG00B3TfP21G');
+        		
+      
+      $payment_intent = PaymentIntent::create([
+          'description' => 'Stripe Test Payment',
+          'amount' => round(Cart::total()),
+          'currency' => 'eur',
+          'description' => 'Nouveau paiement de client ',
+          'payment_method_types' => ['card'],
+      ]);
+      $intent = $payment_intent->client_secret;
 
-        $intent = PaymentIntent::create([
-        'amount' => round(Cart::total()),
-        'currency' => 'eur'
-        ]);
+      return view('checkout.index',compact('intent'));;
 
-       $clientSecret = Arr::get($intent, 'client_secret') ;
-
-        return view('checkout.index',[
-            'clientSecret' =>$clientSecret
-        ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -49,7 +51,8 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cart::destroy();
+        return redirect('/merci');
     }
 
     /**
