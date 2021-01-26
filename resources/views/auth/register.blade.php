@@ -65,12 +65,11 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Vous êtes : </label>
 
                             <div class="col-md-6">
-                                <label class="checkbox-inline mr-2 pt-2">
-                                    <input type="checkbox" class="mr-2" value="">Un professionnelle
-                                  </label>
-                                  <label class="checkbox-inline ml-1 pt-2">
-                                    <input type="checkbox" class ="mr-2" value="" >Un particulier
-                                  </label>
+                                <select id="role" class="form-control" name="role">
+                                    <option value="pro">Professionnelle</option>
+                                    <option value="particulier">Particulier</option>
+                                </select>
+
                             </div>
                         </div>
 
