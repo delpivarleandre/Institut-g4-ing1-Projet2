@@ -7,20 +7,26 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('extra-meta')
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @yield('extra-script')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ae6899135a.js" crossorigin="anonymous"></script>
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    @yield('extra-script')
 </head>
 
 <body>
@@ -51,8 +57,8 @@
                         <a class="nav-link" href="{{ route('structure.service') }}">Services</a>
                     </li>
                     @endcan
-                    
-                    
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('structure.contact') }}">Contact</a>
                     </li>
@@ -86,19 +92,26 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('dashboard') }}">Mes commandes</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+
+                                @cannot('edit-users')
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}">Mes commandes</a>
+                                @endcannot
+                                @can('manage-users')
+                                    <a href="{{route('admin.users.index')}}" class="dropdown-item">Liste des utilisateurs</a>
+                                @endcan
+                                @can('edit-users')
+                                    <a href="{{route('admin.produits.ajouter')}}" class="dropdown-item">Ajouter des articles</a>
+                                    <a href="{{route('admin.produits.index')}}" class="dropdown-item">Gestion des articles</a>
+                                @endcan
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Déconnexion</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                    @can('manage-users')
-                                    <a href="{{route('admin.users.index')}}" class="dropdown-item">Liste des utilisateurs</a>
-                                    @endcan
+
                                 </div>
                             </li>
+
                         @endguest
                     </ul>
                 </div>
@@ -115,6 +128,7 @@
             @yield('content')
         </main>
     </div>
+    @yield('extra-js')
 </body>
 
 </html>
