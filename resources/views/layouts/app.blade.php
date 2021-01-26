@@ -25,6 +25,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    @yield('extra-script')
 </head>
 
 <body>
@@ -55,8 +57,8 @@
                         <a class="nav-link" href="{{ route('structure.service') }}">Services</a>
                     </li>
                     @endcan
-                    
-                    
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('structure.contact') }}">Contact</a>
                     </li>
@@ -90,6 +92,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
                                 @cannot('edit-users')
                                     <a class="dropdown-item" href="{{ route('dashboard') }}">Mes commandes</a>
                                 @endcannot
@@ -108,6 +111,7 @@
 
                                 </div>
                             </li>
+
                         @endguest
                     </ul>
                 </div>

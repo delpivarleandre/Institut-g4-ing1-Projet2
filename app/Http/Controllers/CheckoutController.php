@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
+
 class CheckoutController extends Controller
 {
     /**
