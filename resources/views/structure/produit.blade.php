@@ -20,7 +20,7 @@
                     </div>
                 </form>
                 <div class="px-5 py-3">
-                    <a class="text-gray-700 uppercase " href="{{route('structure.affichage_produit', $product->slug)}}">{{$product->title}}</a>
+                    <a class="text-gray-700 uppercase " href="{{route('structure.affichage_produit', $product)}}">{{$product->title}}</a>
                     <span class="text-gray-500 mt-2">{{$product->getPrice()}}</span>
                 </div>
             </div>

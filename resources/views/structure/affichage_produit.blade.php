@@ -20,8 +20,35 @@
             </div>
         </div>
     </div>
+    <h5>Commentaires</h5>
+
+    @forelse ($product->comments as $comment)
+        <div class="card mb-2">
+            {{$comment->content }}
+            <div class="d-flex justify-content-between align-items-center">
+                <small>Posté le {{$comment->created_at->format('d/m/Y')}}</small>
+                <span class="badge badge-primary">{{$comment->user->name}}</span>
+            </div>
+        </div>
+    @empty
+        <div class="alert alert-info">Aucun commentaire pour ce produit </div>
+    @endforelse
+
+    <form action="{{route('comments.store', $product)}}" method="POST" class="mt-3">
+        @csrf
+        <div class="form-group">
+            <label for="content">Votre commentaire</label>
+            <textarea class="form-control" @error('content') is-invalid @enderror name="content" id="content" rows="5"></textarea>
+            @error('content')
+                <div class="invalid-feedback">{{$errors->first('content')}}</div> 
+            @enderror
+        </div>
+        
+
+        <button type="submit" class="btn btn-primary">Soumettre mon commentaire</button>
+    </form>
 </div>
-</div>
+
 
 
 

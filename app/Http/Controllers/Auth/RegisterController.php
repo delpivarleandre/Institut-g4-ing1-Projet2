@@ -65,15 +65,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user =  User::create([
+        
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        if(preg_match("/.@admin\.com/",$data['email'])){
+            $role = Role::select('id')->where('name', 'admin')->first();
+            $user->roles()->attach($role);
+        }else{
+            $role = Role::select('id')->where('name', 'vendeur')->first();
+            $user->roles()->attach($role);
+        }
 
-        $role = Role::select('id')->where('name', 'particulier')->first();
-        $user->roles()->attach($role);
+        
 
-        return $user;
+        return $user;   
     }
 }
