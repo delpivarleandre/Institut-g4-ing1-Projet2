@@ -21,16 +21,15 @@ use App\Http\Controllers\Admin\UsersController;
 
 
 //--------------------------------------Paiement-----------------------------------------------
-Route::get('/paiement','CheckoutController@index')->name('checkout.index');
-Route::post('/paiement','CheckoutController@store')->name('checkout.store');
-Route::get('/merci', function(){
+Route::get('/paiement', 'CheckoutController@index')->name('checkout.index');
+Route::post('/paiement', 'CheckoutController@store')->name('checkout.store');
+Route::get('/merci', function () {
     return view('checkout.thankyou');
-
 });
 
 //---------------------------------------------------------------------------------------------
 //-----------------------------------Commentaire---------------------------------------
-Route::post('comments/{product}','CommentController@store')->name('comments.store');
+Route::post('comments/{product}', 'CommentController@store')->name('comments.store');
 //-----------------------------------------------------------------------------------
 
 //-----------------------------------Acceuil---------------------------------------
@@ -44,7 +43,7 @@ Route::get('/', function () {
 //---------------------------------Mes commandes------------------------------------
 Route::get('/dashboard', function () {
     return view('home');
-})->name('dashboard'); 
+})->name('dashboard');
 //---------------------------------------------------------------------------------
 
 
@@ -71,26 +70,30 @@ Route::resource('product', 'ProductController');
 //Affichage du panier
 Route::get('/panier', 'PanierController@index')->name('structure.panier');
 
-//Route pour ajouter un produit au panier 
+//Route pour ajouter un produit au panier
 Route::post("/panier/ajouter", 'PanierController@store')->name('panier.store');
 
 //Route pour supprimer un article du panier
-Route::delete('/panier/{rowId}', 'PanierController@destroy')->name('panier.destroy');;
+Route::delete('/panier/{rowId}', 'PanierController@destroy')->name('panier.destroy');
 
 //Route pour vider le panier
 Route::get('/videpanier', function () {
     Cart::destroy();
 });
+
+//Route pour modifier la quantité de l'article du panier
+Route::patch("/panier/{rowId}", 'PanierController@update')->name('panier.update');
+
 //--------------------------------------------------------------------------------------
 
 //-----------------------------------------Admin---------------------------------
 //Affichage des différentes vues liées au role admin
-Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function () {
     Route::resource('users', 'UsersController');
 });
 
 //-------------------------------------Autres vues-------------------------------------------
-//Affichage de la vue présentation 
+//Affichage de la vue présentation
 Route::get('/presentation', function () {
     return view('structure.presentation');
 })->name('structure.presentation');
@@ -105,5 +108,3 @@ Route::get('/service', function () {
     return view('structure.service');
 })->name('structure.service');
 //-----------------------------------------------------------------------------------------------
-
-
