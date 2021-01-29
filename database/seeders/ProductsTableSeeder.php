@@ -23,6 +23,9 @@ class ProductsTableSeeder extends Seeder
                 'title'=>$faker->sentence(4),
                 'price'=>$faker->numberBetween(15,300) * 100,
                 'image'=> 'https://images.unsplash.com/photo-1495856458515-0637185db551?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80'
+          ])->categories()->attach([
+              rand(1,4),
+              rand(1,4)
           ]);     
         }
     }
