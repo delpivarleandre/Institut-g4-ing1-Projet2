@@ -19,7 +19,6 @@ use App\Http\Controllers\Admin\UsersController;
 |
 */
 
-
 //--------------------------------------Paiement-----------------------------------------------
 Route::get('/paiement', 'CheckoutController@index')->name('checkout.index');
 Route::post('/paiement', 'CheckoutController@store')->name('checkout.store');
@@ -38,7 +37,6 @@ Route::get('/', function () {
 })->name('structure.acceuil');
 
 //----------------------------------------------------------------------------------
-
 
 //---------------------------------Mes commandes------------------------------------
 Route::get('/dashboard', function () {
