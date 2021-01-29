@@ -86,12 +86,6 @@
         </div>
     </div>
 </div>
-<select id="country">
-    <option value=""></option>
-    <option value="india">India</option>
-    <option value="Austrelia">Austrelia</option>
-    <option value="turkey">Turkey</option>
-</select>
 @else
 <div class="col-md-12">
     <p>Votre panier est vide.</p>
