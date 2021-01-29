@@ -66,6 +66,7 @@
 
                             <div class="col-md-6">
                                 <select id="role" class="form-control" name="role">
+                                    <option disabled selected> Choisir un rôle</option>
                                     <option value="pro">Professionnelle</option>
                                     <option value="particulier">Particulier</option>
                                 </select>
