@@ -54,7 +54,6 @@
     <script>
         // Custom styling can be passed to options when creating an Element.
         // (Note that this demo uses a wider set of styles than the guide below.)
-
         var style = {
             base: {
                 color: '#32325d',
@@ -71,7 +70,6 @@
                 iconColor: '#fa755a'
             }
         };
-
         const stripe = Stripe('{{ $stripe_key }}', {
             locale: 'en'
         }); // Create a Stripe client.
@@ -81,9 +79,7 @@
         }); // Create an instance of the card Element.
         const cardButton = document.getElementById('card-button');
         const clientSecret = cardButton.dataset.secret;
-
         cardElement.mount('#card-element'); // Add an instance of the card Element into the `card-element` <div>.
-
         // Handle real-time validation errors from the card Element.
         cardElement.addEventListener('change', function(event) {
             var displayError = document.getElementById('card-errors');
@@ -93,13 +89,10 @@
                 displayError.textContent = '';
             }
         });
-
         // Handle form submission.
         var form = document.getElementById('payment-form');
-
         form.addEventListener('submit', function(event) {
             event.preventDefault();
-
             stripe.handleCardPayment(clientSecret, cardElement, {
                     payment_method_data: {
                         //billing_details: { name: cardHolderName.value }
@@ -113,31 +106,28 @@
                         errorElement.textContent = result.error.message;
                     } else {
                         var token = '{{ csrf_token() }}';
-                        var request_test = new Request('/paiement/', {
-                            headers: new Headers({
+                        fetch('/paiement', {
+                            headers: {
                                 "Content-Type": "application/json",
                                 "Accept": "application/json, text-plain, /",
                                 "X-Requested-With": "XMLHttpRequest",
                                 "X-CSRF-TOKEN": token
-                            }),
+                            },
                             method: 'POST',
-                            json: JSON.stringify({
+                            body: JSON.stringify({
                                 paymentIntent: result
                             })
-                        });
-                        fetch(request_test).then((data) => {
+                        }).then((data) => {
                             if (!data.ok) {
                                 console.log('Mauvaise réponse du réseau');
                             }
-
+                            console.log(result)
                             console.log(data);
-
                             document.location.href = "/merci";
                         }).catch((error) => {
                             console.error(error)
                         })
                         console.log(result);
-
                     }
                 });
         });
