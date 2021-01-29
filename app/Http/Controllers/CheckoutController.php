@@ -8,7 +8,7 @@ use App\Models\Order;
 use Stripe\PaymentIntent;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
-use Stripe\Checkout\Session;
+use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 
@@ -93,7 +93,7 @@ class CheckoutController extends Controller
 
     public function thankyou()
     {
-        return Session::has('success') ? view('checkout.thankou') : redirect()->route('structure.produit');
+        return Session::has('success') ? view('checkout.thankyou') : redirect()->route('structure.produit');
     }
 
     /**
