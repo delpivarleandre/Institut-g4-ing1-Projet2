@@ -7,11 +7,11 @@
         <h1 class="text-center">Les produits</h1>
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
-              @foreach (App\Models\Category::all() as $category)
-              <a class="p-2 text-muted" href="{{ route('structure.produit', ['categorie' => $category->name]) }}">{{ $category->name }}</a>
-              @endforeach
+                @foreach (App\Models\Category::all() as $category)
+                <a class="p-2 text-muted" href="{{ route('structure.produit', ['categorie' => $category->name]) }}">{{ $category->name }}</a>
+                @endforeach
             </nav>
-          </div>
+        </div>
         <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
             @foreach ($products as $product)
             <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
