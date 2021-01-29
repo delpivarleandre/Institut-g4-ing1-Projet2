@@ -20,6 +20,10 @@ class Product extends Model
         'price'
     ];
 
+    public function categories(){
+        return $this->belongsToMany('App\Models\Category');
+    }
+
     public function getPrice()
     {
         $price = $this->price / 100;
