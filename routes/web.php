@@ -19,13 +19,28 @@ use App\Http\Controllers\Admin\UsersController;
 |
 */
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+Route::get('/produit', 'ProductController@index')->name('structure.produit');
+Route::get('/produit/{slug}', 'ProductController@show')->name('structure.affichage_produit');
+
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function () {
+    Route::resource('users', 'UsersController');
+=======
+>>>>>>> 5bf5c27822615a69c1d7a8c852a72ba889051f5c
 //--------------------------------------Paiement-----------------------------------------------
 Route::get('/paiement','CheckoutController@index')->name('checkout.index');
 Route::post('/paiement','CheckoutController@store')->name('checkout.store');
 Route::get('/merci', function(){
     return view('checkout.thankyou');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14ef17750cff7fb76c82d0dc4a1265e686e17e5a
+>>>>>>> 5bf5c27822615a69c1d7a8c852a72ba889051f5c
 });
 
 //---------------------------------------------------------------------------------------------
@@ -40,13 +55,23 @@ Route::get('/', function () {
 
 //----------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+Route::get('/paiement', 'CheckoutController@index')->name('structure.paiement');
+=======
+>>>>>>> 5bf5c27822615a69c1d7a8c852a72ba889051f5c
 //---------------------------------Mes commandes------------------------------------
 Route::get('/dashboard', function () {
     return view('home');
 })->name('dashboard'); 
 //---------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+>>>>>>> 14ef17750cff7fb76c82d0dc4a1265e686e17e5a
+>>>>>>> 5bf5c27822615a69c1d7a8c852a72ba889051f5c
 
 //-------------------------------------------Authentification-----------------------------------
 Auth::routes();

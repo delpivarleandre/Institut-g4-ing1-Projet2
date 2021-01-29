@@ -92,7 +92,25 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+                                <a class="dropdown-item" href="{{ route('dashboard') }}">Mes commandes</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                @can('manage-users')
+                                <a href="{{route('admin.users.index')}}" class="dropdown-item">Liste des utilisateurs</a>
+                                @endcan
+                            </div>
+                        </li>
+=======
+>>>>>>> 5bf5c27822615a69c1d7a8c852a72ba889051f5c
                                 @cannot('edit-users')
                                     <a class="dropdown-item" href="{{ route('dashboard') }}">Mes commandes</a>
                                 @endcannot
@@ -111,7 +129,11 @@
 
                                 </div>
                             </li>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14ef17750cff7fb76c82d0dc4a1265e686e17e5a
+>>>>>>> 5bf5c27822615a69c1d7a8c852a72ba889051f5c
                         @endguest
                     </ul>
                 </div>

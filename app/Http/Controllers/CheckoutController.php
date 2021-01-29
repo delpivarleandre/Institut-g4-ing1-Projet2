@@ -2,12 +2,26 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Stripe\Stripe;
+use Stripe\PaymentIntent;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+=======
+>>>>>>> 5bf5c27822615a69c1d7a8c852a72ba889051f5c
 use Stripe\Stripe;
 use Stripe\PaymentIntent;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14ef17750cff7fb76c82d0dc4a1265e686e17e5a
+>>>>>>> 5bf5c27822615a69c1d7a8c852a72ba889051f5c
 
 class CheckoutController extends Controller
 {
@@ -18,6 +32,26 @@ class CheckoutController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        Stripe::setApiKey('sk_test_51Hz2YMKD73GROJG3kfW1wZhP8MV21BosFtIh1qLKFCuqfBn0a01LjFqEYxbuIcX5rD1Aznzb92tks1TE5fpDQR9Q0056p7jEaZ');
+
+        $intent = PaymentIntent::create([
+            'amount' => round(Cart::total()),
+            'currency' => 'eur',
+        ]);
+
+        $clientSecret = Arr::get($intent, 'client_secret');
+
+        return view('structure.paiement', [
+            'clientSecret' => $clientSecret
+        ]);
+        // return view('structure.paiement');
+    }
+
+=======
+>>>>>>> 5bf5c27822615a69c1d7a8c852a72ba889051f5c
       // Enter Your Stripe Secret
       Stripe::setApiKey('sk_test_51I0wFvAEUallKK3arCyv7FvOzNMo8BoZZzymOYUsi8Kea3j2rEhtaQS6E2pwCe5uLQZLGLu5LIqdAFPNXkRGfFcG00B3TfP21G');
         		
@@ -34,6 +68,10 @@ class CheckoutController extends Controller
       return view('checkout.index',compact('intent'));;
 
     }
+<<<<<<< HEAD
+=======
+>>>>>>> 14ef17750cff7fb76c82d0dc4a1265e686e17e5a
+>>>>>>> 5bf5c27822615a69c1d7a8c852a72ba889051f5c
     /**
      * Show the form for creating a new resource.
      *
@@ -52,8 +90,17 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         Cart::destroy();
         return redirect('/merci');
+=======
+<<<<<<< HEAD
+        //
+=======
+        Cart::destroy();
+        return redirect('/merci');
+>>>>>>> 14ef17750cff7fb76c82d0dc4a1265e686e17e5a
+>>>>>>> 5bf5c27822615a69c1d7a8c852a72ba889051f5c
     }
 
     /**
