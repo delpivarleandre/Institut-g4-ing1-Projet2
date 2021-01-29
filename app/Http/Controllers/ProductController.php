@@ -17,7 +17,13 @@ class ProductController extends Controller
     
     public function index()
     {
-        $products = Product::all();
+        if(request()->categorie){
+            $products = Product::with('categories')->whereHas('categories', function($query){
+                $query->where('name', request()->categorie);
+            })->paginate(4);
+        }else{
+            $products = Product::with('categories')->paginate(4);
+        }
         return view('structure.produit')->with('products', $products);
     }
 
