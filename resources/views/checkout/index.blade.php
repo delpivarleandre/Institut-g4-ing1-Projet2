@@ -113,26 +113,26 @@
                         errorElement.textContent = result.error.message;
                     } else {
                         var token = '{{ csrf_token() }}';
-                        var request_test = new Request('/paiement/', {
-                            headers: new Headers({
+                        fetch('/paiement', {
+                            headers: {
                                 "Content-Type": "application/json",
                                 "Accept": "application/json, text-plain, /",
                                 "X-Requested-With": "XMLHttpRequest",
                                 "X-CSRF-TOKEN": token
-                            }),
+                            },
                             method: 'POST',
-                            json: JSON.stringify({
+                            body: JSON.stringify({
                                 paymentIntent: result
                             })
-                        });
-                        fetch(request_test).then((data) => {
+
+                        }).then((data) => {
                             if (!data.ok) {
                                 console.log('Mauvaise réponse du réseau');
                             }
-
+                            console.log(result)
                             console.log(data);
 
-                            document.location.href = "/merci";
+                            // document.location.href = "/merci";
                         }).catch((error) => {
                             console.error(error)
                         })

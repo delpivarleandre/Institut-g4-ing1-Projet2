@@ -51,7 +51,7 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->json());
+        dd($request->json()->all());
         Cart::destroy();
         return redirect('/merci');
     }
