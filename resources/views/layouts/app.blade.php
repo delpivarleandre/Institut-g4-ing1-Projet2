@@ -35,32 +35,32 @@
             <div class="container">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('structure.acceuil') }}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('acceuil.index') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.presentation') }}">Présentation</a>
+                        <a class="nav-link" href="{{ route('presentation.index') }}">Présentation</a>
                     </li>
                     @can('access-product')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.produit') }}">Produits</a>
+                        <a class="nav-link" href="{{ route('products.index') }}">Produits</a>
                     </li>
                     @elsecan('access-service')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.service') }}">Services</a>
+                        <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
                     @endcan
                     @can('edit-users')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.produit') }}">Produits</a>
+                        <a class="nav-link" href="{{ route('products.index') }}">Produits</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.service') }}">Services</a>
+                        <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
                     @endcan
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.contact') }}">Contact</a>
+                        <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
                     </li>
                 </ul>
 
@@ -94,7 +94,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                 @cannot('edit-users')
-                                    <a class="dropdown-item" href="{{ route('dashboard') }}">Mes commandes</a>
+                                    <a class="dropdown-item" href="{{ route('orders.index') }}">Mes commandes</a>
                                 @endcannot
                                 @can('manage-users')
                                     <a href="{{route('admin.users.index')}}" class="dropdown-item">Liste des utilisateurs</a>
@@ -116,7 +116,7 @@
                     </ul>
                 </div>
             </div>
-            <a href="{{route('structure.panier')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
+            <a href="{{route('cart.index')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
             <!-- le span permet d'afficher le nombre d'article dans le panier -->
         </nav>
         @if (session('success'))

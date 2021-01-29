@@ -8,14 +8,14 @@
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
                 @foreach (App\Models\Category::all() as $category)
-                <a class="p-2 text-muted" href="{{ route('structure.produit', ['categorie' => $category->name]) }}">{{ $category->name }}</a>
+                <a class="p-2 text-muted" href="{{ route('products.index', ['categorie' => $category->name]) }}">{{ $category->name }}</a>
                 @endforeach
             </nav>
         </div>
         <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
             @foreach ($products as $product)
             <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <form action="{{ route('panier.store') }}" method="POST">
+                <form action="{{ route('cart.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                     <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('{{$product->image}}')">
@@ -27,7 +27,7 @@
                     </div>
                 </form>
                 <div class="px-5 py-3">
-                    <a class="text-gray-700 uppercase " href="{{route('structure.affichage_produit', $product)}}">{{$product->title}}</a>
+                    <a class="text-gray-700 uppercase " href="{{route('products.show', $product)}}">{{$product->title}}</a>
                     <span class="text-gray-500 mt-2">{{$product->getPrice()}}</span>
                     @foreach($product->categories as $category)
                     <span class="text-gray-500 mt-2">{{$category->name}}</span>

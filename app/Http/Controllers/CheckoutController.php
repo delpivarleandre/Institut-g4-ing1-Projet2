@@ -22,7 +22,7 @@ class CheckoutController extends Controller
     public function index()
     {
         if (Cart::count() <= 0) {
-            return redirect()->route('structure.produit');
+            return redirect()->route('products.index');
         }
         // Enter Your Stripe Secret
         Stripe::setApiKey('sk_test_51I0wFvAEUallKK3arCyv7FvOzNMo8BoZZzymOYUsi8Kea3j2rEhtaQS6E2pwCe5uLQZLGLu5LIqdAFPNXkRGfFcG00B3TfP21G');
@@ -93,7 +93,7 @@ class CheckoutController extends Controller
 
     public function thankyou()
     {
-        return Session::has('success') ? view('checkout.thankyou') : redirect()->route('structure.produit');
+        return Session::has('success') ? view('checkout.thankyou') : redirect()->route('products.index');
     }
 
     /**

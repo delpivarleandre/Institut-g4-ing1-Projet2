@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        if($data['role']="pro"){
+        if($data['role']=="pro"){
             $role = Role::select('id')->where('name', 'pro')->first();
             $user->roles()->attach($role);
         }else{

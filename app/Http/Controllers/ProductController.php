@@ -24,12 +24,12 @@ class ProductController extends Controller
         }else{
             $products = Product::with('categories')->paginate(4);
         }
-        return view('structure.produit')->with('products', $products);
+        return view('products.index')->with('products', $products);
     }
 
     public function show(Product $product)
     {
-        return view('structure.affichage_produit',compact('product'));
+        return view('products.show',compact('product'));
     }
 
     public function gestion_article_index()
