@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Comment;
+use App\Models\Product;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,23 +14,6 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }
-    
-    public function index()
-    {
-        if(request()->categorie){
-            $products = Product::with('categories')->whereHas('categories', function($query){
-                $query->where('name', request()->categorie);
-            })->paginate(4);
-        }else{
-            $products = Product::with('categories')->paginate(4);
-        }
-        return view('products.index')->with('products', $products);
-    }
-
-    public function show(Product $product)
-    {
-        return view('products.show',compact('product'));
     }
 
     public function gestion_article_index()
@@ -48,17 +32,37 @@ class ProductController extends Controller
         return view('admin.produits.editer', compact('product'));
     }
 
+    
+    public function index()
+    {
+        if(request()->categorie){
+            $products = Product::with('categories')->whereHas('categories', function($query){
+                $query->where('name', request()->categorie);
+            })->paginate(4);
+        }else{
+            $products = Product::with('categories')->paginate(4);
+        }
+        return view('products.index')->with('products', $products);
+    }
+
+    public function show(Product $product)
+    {
+        return view('products.show',compact('product'));
+    }
 
     public function store(Request $request)
     {
         $data= $request->validate([
             'title' =>'required|min:1',
             'image'=>'required|min:1',
-            'price'=>'required'
-
+            'price'=>'required',
+            'cat'=>'required'
         ]);
-
-        Product::create($data); 
+        $product=Product::create($data); 
+        $ref_categorie= $data['cat'];
+       
+        $product->categories()->attach($ref_categorie);
+       
 
         return redirect()->route('admin.produits.index');
     }
@@ -66,7 +70,10 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
 
-        Product::destroy($product->id);
+        //Product::destroy($product->id);
+
+        $product->categories()->detach();
+        $product->delete();
 
         return redirect('/gestionsarticle');
     }
@@ -77,11 +84,16 @@ class ProductController extends Controller
         $data= $request->validate([
             'title' =>'required|min:5',
             'image'=>'required|min:1',
-            'price'=>'required|min:1'
+            'price'=>'required|min:1',
+            'cat'=>'required'
 
         ]);
             
         $product->update($data);
+        $ref_categorie= $data['cat'];
+
+        $product->categories()->sync($ref_categorie);
+
 
         return redirect()->route('admin.produits.index');
     }
