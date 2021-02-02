@@ -102,6 +102,8 @@
                                 @can('edit-users')
                                     <a href="{{route('admin.produits.ajouter')}}" class="dropdown-item">Ajouter des articles</a>
                                     <a href="{{route('admin.produits.index')}}" class="dropdown-item">Gestion des articles</a>
+                                    <a href="{{route('admin.category.ajouter')}}" class="dropdown-item">Ajouter des catégories</a>
+                                    <a href="{{route('admin.category.index')}}" class="dropdown-item">Gestion des catégories</a>
                                 @endcan
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">Déconnexion</a>

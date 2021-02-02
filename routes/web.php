@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\AjoutCategorieController;
 
 
 
@@ -21,6 +22,9 @@ use App\Http\Controllers\Admin\UsersController;
 |
 */
 
+Route::get('/gestioncategorie', 'Admin\AjoutCategorieController@index')->name('admin.category.index');
+Route::get('/gestioncategorie/ajouter', 'Admin\AjoutCategorieController@create')->name('admin.category.ajouter');
+Route::resource('/admin/category', 'Admin\AjoutCategorieController');
 /* Contact Routes */
 Route::resource('contact', 'ContactController');
 
