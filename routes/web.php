@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\UsersController;
+
 
 
 /*
@@ -18,6 +20,9 @@ use App\Http\Controllers\Admin\UsersController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/* Contact Routes */
+Route::resource('contact', 'ContactController');
 
 /* Product Routes */
 Route::get('/produit', 'ProductController@index')->name('products.index');
@@ -64,12 +69,7 @@ Route::get('/presentation', function () {
     return view('presentation.index');
 })->name('presentation.index');
 
-//Affichage de la vue contact
-Route::get('/contact', function () {
-    return view('contact.index');
-})->name('contact.index');
-
-//Afiichage de la vue des services
+//Affichage de la vue des services
 Route::get('/service', function () {
     return view('services.index');
 })->name('services.index');
