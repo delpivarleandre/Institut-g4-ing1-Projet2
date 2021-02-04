@@ -2,15 +2,16 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DevisController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\AjoutProductController;
+use App\Http\Controllers\Admin\AjoutServiceController;
 use App\Http\Controllers\Admin\AjoutCategorieController;
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -33,12 +34,23 @@ Route::get('/gestionsarticle', 'Admin\AjoutProductController@index')->name('admi
 Route::get('/gestionsarticle/ajouter', 'Admin\AjoutProductController@create')->name('admin.produits.ajouter');
 Route::resource('/admin/product', 'Admin\AjoutProductController');
 
+/* Admin Gestion Product Routes */
+Route::get('/gestionsservice', 'Admin\AjoutServiceController@index')->name('admin.services.index');
+Route::get('/gestionsservice/ajouter', 'Admin\AjoutServiceController@create')->name('admin.services.ajouter');
+Route::resource('/admin/service', 'Admin\AjoutServiceController');
+
 /* Contact Routes */
 Route::resource('contact', 'ContactController');
 
 /* Product Routes */
 Route::get('/produit', 'ProductController@index')->name('products.index');
 Route::get('/produit/{product}', 'ProductController@show')->name('products.show');
+Route::get('/search', 'ProductController@search')->name('products.search');
+
+
+/* Services Routes */
+Route::get('/service', 'ServiceController@index')->name('services.index');
+Route::get('/service/{service}', 'ServiceController@show')->name('services.show');
 
 /*Comment Product Routes*/
 Route::post('comments/{product}', 'CommentController@store')->name('comments.store');
@@ -75,12 +87,17 @@ Route::get('/presentation', function () {
     return view('presentation.index');
 })->name('presentation.index');
 
-//Affichage de la vue des services
-Route::get('/service', function () {
-    return view('services.index');
-})->name('services.index');
 
 //Affichage de la vue Mes commandes
 Route::get('/mescommandes', function () {
     return view('orders.index');
 })->name('orders.index');
+
+//
+Route::get('/paneladmin', function () {
+    return view('admin.dashboard.index');
+})->name('admin.dashboard.index');
+
+Route::get('/devis', [DevisController::class, 'showDevis']);
+
+Route::get('/devis/pdf', [DevisController::class, 'createPDF']);

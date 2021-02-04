@@ -2,22 +2,10 @@
 
 @section('content')
 <main class="my-8">
-
+    <div class="text-center">
+        <a href="{{route('products.index')}}" class="btn btn-success "> retour</a>
+    </div>
     <div class="container mx-auto px-6">
-        <h1 class="text-center">Les produits</h1>
-        <form action="{{ route('products.search') }}" class="d-flex mr-3">
-            <div class="form-group mb-0 mr-1">
-                <input type="text" name="q" class="form-control" value="{{ request()->q ?? '' }}">
-            </div>
-            <button type="submit" class="btn btn-info"><i class="fa fa-search" aria-hidden="true"></i></button>
-        </form>
-        <div class="nav-scroller py-1 mb-2">
-            <nav class="nav d-flex justify-content-between">
-                @foreach (App\Models\Category::all() as $category)
-                <a class="p-2 text-muted" href="{{ route('products.index', ['categorie' => $category->name]) }}">{{ $category->name }}</a>
-                @endforeach
-            </nav>
-        </div>
         <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
             @foreach ($products as $product)
             <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
@@ -41,12 +29,7 @@
                 </div>
             </div>
             @endforeach
-            {{ $products->appends(request()->input())->links() }}
         </div>
-
     </div>
-
 </main>
-
-
 @endsection

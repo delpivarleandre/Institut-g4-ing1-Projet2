@@ -92,18 +92,11 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
                                 @cannot('edit-users')
                                     <a class="dropdown-item" href="{{ route('orders.index') }}">Mes commandes</a>
                                 @endcannot
                                 @can('manage-users')
-                                    <a href="{{route('admin.users.index')}}" class="dropdown-item">Liste des utilisateurs</a>
-                                @endcan
-                                @can('edit-users')
-                                    <a href="{{route('admin.produits.ajouter')}}" class="dropdown-item">Ajouter des articles</a>
-                                    <a href="{{route('admin.produits.index')}}" class="dropdown-item">Gestion des articles</a>
-                                    <a href="{{route('admin.category.ajouter')}}" class="dropdown-item">Ajouter des catégories</a>
-                                    <a href="{{route('admin.category.index')}}" class="dropdown-item">Gestion des catégories</a>
+                                    <a href="{{route('admin.dashboard.index')}}" class="dropdown-item">Panel d'administration</a>
                                 @endcan
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">Déconnexion</a>
