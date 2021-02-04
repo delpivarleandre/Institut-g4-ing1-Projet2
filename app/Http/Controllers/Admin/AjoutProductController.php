@@ -45,7 +45,7 @@ class AjoutProductController extends Controller
         ]);
         $product=Product::create($data); 
         $ref_categorie= $data['cat'];
-        
+       
         $product->categories()->attach($ref_categorie);
        
 
@@ -59,7 +59,7 @@ class AjoutProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
-    {
+    {   
         return view('products.show',compact('product'));
     }
 
@@ -86,11 +86,16 @@ class AjoutProductController extends Controller
         $data= $request->validate([
             'title' =>'required|min:5',
             'image'=>'required|min:1',
-            'price'=>'required|min:1'
+            'price'=>'required|min:1',
+            'cat'=>'required'
 
         ]);
             
         $product->update($data);
+        $ref_categorie= $data['cat'];
+
+        $product->categories()->sync($ref_categorie);
+
 
         return redirect()->route('admin.produits.index');
     }
@@ -103,7 +108,8 @@ class AjoutProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        Product::destroy($product->id);
+        $product->categories()->detach();
+        $product->delete();
 
         return redirect('/gestionsarticle');
     }

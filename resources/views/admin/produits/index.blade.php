@@ -24,7 +24,7 @@
                         <td>{{$product->getPrice()}}</td>
                         <td>
                             <a href="{{route('products.show', $product)}}" class=" btn btn-primary">Voir</a>
-                            <a href="{{route('admin.produits.editer', $product)}}" class=" btn btn-warning">Edit</a>
+                            <a href="{{route('product.edit', $product)}}" class=" btn btn-warning">Edit</a>
                             <form action="{{route('product.destroy', $product)}}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')

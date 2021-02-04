@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\AjoutProductController;
 use App\Http\Controllers\Admin\AjoutCategorieController;
 
 
@@ -22,16 +23,22 @@ use App\Http\Controllers\Admin\AjoutCategorieController;
 |
 */
 
+/* Admin Gestion Categorie Routes */
 Route::get('/gestioncategorie', 'Admin\AjoutCategorieController@index')->name('admin.category.index');
 Route::get('/gestioncategorie/ajouter', 'Admin\AjoutCategorieController@create')->name('admin.category.ajouter');
 Route::resource('/admin/category', 'Admin\AjoutCategorieController');
+
+/* Admin Gestion Product Routes */
+Route::get('/gestionsarticle', 'Admin\AjoutProductController@index')->name('admin.produits.index');
+Route::get('/gestionsarticle/ajouter', 'Admin\AjoutProductController@create')->name('admin.produits.ajouter');
+Route::resource('/admin/product', 'Admin\AjoutProductController');
+
 /* Contact Routes */
 Route::resource('contact', 'ContactController');
 
 /* Product Routes */
 Route::get('/produit', 'ProductController@index')->name('products.index');
 Route::get('/produit/{product}', 'ProductController@show')->name('products.show');
-Route::resource('product', 'ProductController');
 
 /*Comment Product Routes*/
 Route::post('comments/{product}', 'CommentController@store')->name('comments.store');
@@ -49,11 +56,6 @@ Route::get('/videpanier', function () {
 Route::get('/paiement', 'CheckoutController@index')->name('checkout.index');
 Route::post('/paiement', 'CheckoutController@store')->name('checkout.store');
 Route::get('/merci', 'CheckoutController@thankyou')->name('checkout.thankyou');
-
-/* Admin Gestion Product Routes */
-Route::get('/gestionsarticle', 'ProductController@gestion_article_index')->name('admin.produits.index')->middleware('auth');
-Route::get('/gestionsarticle/ajouter', 'ProductController@gestion_article_ajouter')->name('admin.produits.ajouter');
-Route::get('/gestionsarticle/modifier/{product}', 'ProductController@gestion_article_editer')->name('admin.produits.editer');
 
 /* Authentification Routes */
 Auth::routes();
