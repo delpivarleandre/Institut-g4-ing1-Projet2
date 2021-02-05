@@ -8,7 +8,7 @@
                 <div class="col p-4 d-flex flex-column position-static">
                     <h3 class="mb-0">{{$product->title}}</h3>
                     <p class="mb-0">{{$product->getPrice()}}</p>
-                    <form action="{{ route('panier.store') }}" method="POST">
+                    <form action="{{ route('cart.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                         <button type="submit" class="btn btn-dark">Ajouter au panier</button>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Gestion des articles</div>
+                <div class="card-header">Gestion des catégories</div>
 
                 <div class="card-body">
 
@@ -13,19 +13,16 @@
                     <thread>
                         <tr>
                         <th scope ="col">Nom</th>
-                        <th scope ="col">Prix</th>
                         <th scope ="col">Actions</th>
                         </tr>
                     </thread>
                     <tbody> 
-                   @foreach ($products as $product)
+                   @foreach ($categories as $categorie)
                         <tr>
-                        <td>{{$product->title}}</td>
-                        <td>{{$product->getPrice()}}</td>
+                        <td>{{$categorie->name}}</td>
                         <td>
-                            <a href="{{route('products.show', $product)}}" class=" btn btn-primary">Voir</a>
-                            <a href="{{route('product.edit', $product)}}" class=" btn btn-warning">Edit</a>
-                            <form action="{{route('product.destroy', $product)}}" method="POST" class="d-inline">
+                            <a href="{{route('category.edit', $categorie)}}" class=" btn btn-warning">Edit</a>
+                            <form action="{{route('category.destroy', $categorie)}}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Sup</button>

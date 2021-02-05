@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Gestion des articles</div>
+                <div class="card-header">Gestion des services</div>
 
                 <div class="card-body">
 
@@ -18,14 +18,14 @@
                         </tr>
                     </thread>
                     <tbody> 
-                   @foreach ($products as $product)
+                   @foreach ($services as $service)
                         <tr>
-                        <td>{{$product->title}}</td>
-                        <td>{{$product->getPrice()}}</td>
+                        <td>{{$service->title}}</td>
+                        <td>{{$service->getPrice()}}</td>
                         <td>
-                            <a href="{{route('products.show', $product)}}" class=" btn btn-primary">Voir</a>
-                            <a href="{{route('product.edit', $product)}}" class=" btn btn-warning">Edit</a>
-                            <form action="{{route('product.destroy', $product)}}" method="POST" class="d-inline">
+                            <a href="{{route('services.show', $service)}}" class=" btn btn-primary">Voir</a>
+                            <a href="{{route('service.edit', $service)}}" class=" btn btn-warning">Edit</a>
+                            <form action="{{route('service.destroy', $service)}}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Sup</button>

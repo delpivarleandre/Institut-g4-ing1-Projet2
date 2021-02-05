@@ -17,7 +17,7 @@ class PanierController extends Controller
      */
     public function index()
     {
-        return view('structure.panier');
+        return view('cart.index');
     }
 
     /**
@@ -43,14 +43,14 @@ class PanierController extends Controller
         });
 
         if ($duplicata->isNotEmpty()) {
-            return redirect()->route('structure.produit')->with('success', 'Le produit a déjà été ajouté.');
+            return redirect()->route('products.index')->with('success', 'Le produit a déjà été ajouté.');
         }
 
         $product = Product::find($request->product_id);
 
         Cart::add($product->id, $product->title, 1, $product->price)
             ->associate('App\Models\Product');
-        return redirect()->route('structure.produit')->with('success', 'Le produit a bien été ajouté.');
+        return redirect()->route('products.index')->with('success', 'Le produit a bien été ajouté.');
     }
 
     /**
