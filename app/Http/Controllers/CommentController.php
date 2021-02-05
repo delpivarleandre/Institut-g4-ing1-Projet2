@@ -25,7 +25,7 @@ class CommentController extends Controller
 
         $product->comments()->save($comment);
 
-        return redirect()->route('structure.affichage_produit', $product);
+        return redirect()->route('products.show', $product);
     }
 
 
