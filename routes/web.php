@@ -98,6 +98,6 @@ Route::get('/paneladmin', function () {
     return view('admin.dashboard.index');
 })->name('admin.dashboard.index');
 
-Route::get('/devis', [DevisController::class, 'showDevis']);
+Route::get('/devis', [DevisController::class, 'showDevis'])->name('devis.index');
 
 Route::get('/devis/pdf', [DevisController::class, 'createPDF']);

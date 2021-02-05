@@ -8,11 +8,7 @@
                 <div class="col p-4 d-flex flex-column position-static">
                     <h3 class="mb-0">{{$service->title}}</h3>
                     <p class="mb-0">{{$service->getPrice()}}</p>
-                    <form action="{{ route('cart.store') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="product_id" value="{{ $service->id }}">
-                        <button type="submit" class="btn btn-dark">Demander un devis</button>
-                    </form>
+                    <a href="{{route('devis.index')}}" class="btn btn-success "> Demander un devis</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
                     <img src="{{$service->image}}">
