@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Comment;
-
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -24,67 +24,25 @@ class ProductController extends Controller
         }else{
             $products = Product::with('categories')->paginate(4);
         }
-        return view('structure.produit')->with('products', $products);
+        return view('products.index')->with('products', $products);
     }
 
     public function show(Product $product)
     {
-        return view('structure.affichage_produit',compact('product'));
-    }
+        return view('products.show',compact('product'));
+    }   
 
-    public function gestion_article_index()
+      public function search()
     {
-        $products = Product::all();
-        return view('admin.produits.index')->with('products', $products);
-    }
-
-    public function gestion_article_ajouter()
-    {
-        return view('admin.produits.ajouter');
-    }
-
-    public function gestion_article_editer(Product $product)
-    {
-        return view('admin.produits.editer', compact('product'));
-    }
-
-
-    public function store(Request $request)
-    {
-        $data= $request->validate([
-            'title' =>'required|min:1',
-            'image'=>'required|min:1',
-            'price'=>'required'
-
+        request()->validate([
+            'q' => 'required|min:3'
         ]);
 
-        Product::create($data); 
+        $q = request()->input('q');
 
-        return redirect()->route('admin.produits.index');
+        $products = Product::where('title', 'like', "%$q%")
+                ->paginate(6);
+
+        return view('products.search')->with('products', $products);
     }
-
-    public function destroy(Product $product)
-    {
-
-        Product::destroy($product->id);
-
-        return redirect('/gestionsarticle');
-    }
-
-    public function update(Request $request, Product $product)
-    {
-
-        $data= $request->validate([
-            'title' =>'required|min:5',
-            'image'=>'required|min:1',
-            'price'=>'required|min:1'
-
-        ]);
-            
-        $product->update($data);
-
-        return redirect()->route('admin.produits.index');
-    }
-
-
 }
