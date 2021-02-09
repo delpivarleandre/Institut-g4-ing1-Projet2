@@ -8,21 +8,36 @@ use PDF;
 
 class DevisController extends Controller
 {
-    public function showDevis(){
-        $devis = Devis::all();
-        return view('devis.index', compact('devis'));
+      public function index()
+      {
+              $devis = Devis::all();
+      
+              return view('devis.index', compact('devis'));
       }
 
-      // Generate PDF
-    public function createPDF() {
-        // retreive all records from db
-        $data = Devis::all();
+      public function create()
+      {
+        return view('devis.ajouter');
+
+      } 
+
+      public function store(Request $request)
+      {
+          $data= $request->validate([
+              'name' =>'required|min:1',
+              'email'=>'required|min:1',
+              'phone'=>'required|min:1'
+          ]);
   
-        // share data to view
-        view()->share('devis',$data);
-        $pdf = PDF::loadView('devis.pdf_view', $data);
+          Devis::create($data); 
   
-        // download PDF file with download method
-        return $pdf->download('pdf_file.pdf');
+          return redirect()->route('devis.index');
       }
+
+      public function downloadPDF($id) {
+        $devi = Devis::find($id);
+        $pdf = PDF::loadView('devis.pdf_view', compact('devi'));
+        
+        return $pdf->download('devis.pdf');
+  }
 }
