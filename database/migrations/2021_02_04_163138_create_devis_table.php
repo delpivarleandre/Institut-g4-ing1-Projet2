@@ -15,9 +15,9 @@ class CreateDevisTable extends Migration
     {
         Schema::create('devis', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
+            $table->string('size');
+            $table->string('time');
+            $table->string('qty');
             $table->timestamps();
         });
     }

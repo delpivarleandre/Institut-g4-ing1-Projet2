@@ -8,21 +8,21 @@
     <table class="table table-bordered">
     <thead>
       <tr>
-        <td><b>Name</b></td>
-        <td><b>Email</b></td>
-        <td><b>Phone</b></td>     
+        <td><b>Quantité</b></td>
+        <td><b>Temps de location (en jour)</b></td>
+        <td><b>Taille</b></td>     
       </tr>
       </thead>
       <tbody>
       <tr>
         <td>
-          {{$devi->name}}
+          {{$devi->qty}}
         </td>
         <td>
-          {{$devi->email}}
+          {{$devi->time}}
         </td>
         <td>
-          {{$devi->phone}}
+          {{$devi->size}}
         </td>
       </tr>
       </tbody>

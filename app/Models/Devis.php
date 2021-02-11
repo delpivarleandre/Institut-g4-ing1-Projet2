@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Devis extends Model
 {
-    public $fillable = ['name', 'email', 'phone'];
+    public $fillable = ['time', 'qty', 'size'];
 
 }

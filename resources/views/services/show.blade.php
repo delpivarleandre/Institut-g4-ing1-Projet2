@@ -6,9 +6,35 @@
         <div class="col-md-12">
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
-                    <h3 class="mb-0">{{$service->title}}</h3>
-                    <p class="mb-0">{{$service->getPrice()}}</p>
-                    <a href="{{route('devis.index')}}" class="btn btn-success "> Demander un devis</a>
+                    <form action="{{route('devis.store')}}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="qty">Nombre de {{$service->title}}  : </label>
+                            <input type="number" class="form-control @error('qty') is-invalid @enderror" name="qty" id="qty"></input>
+                            @error('qty')
+                            <div class="invalid-feedback">{{$errors->first('qty')}}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Durée de location (en jours) : </label>
+                            <input type="number" class="form-control @error('time') is-invalid @enderror" name="time" id="time"></input>
+                            @error('time')
+                            <div class="invalid-feedback">{{$errors->first('time')}}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="size">Taille  : </label>
+                            <input type="text" class="form-control @error('size') is-invalid @enderror" name="size" id="size"></input>
+                            @error('size')
+                            <div class="invalid-feedback">{{$errors->first('size')}}</div>
+                            @enderror
+                        </div>
+                    
+                    
+                    
+                        <button type="submit" class="btn btn-primary"> Demander un devis</button>  
+                    
+                    </form>
                 </div>
                 <div class="col-auto d-none d-lg-block">
                     <img src="{{$service->image}}">

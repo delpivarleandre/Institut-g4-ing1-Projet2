@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Devis;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -24,14 +25,14 @@ class DevisController extends Controller
       public function store(Request $request)
       {
           $data= $request->validate([
-              'name' =>'required|min:1',
-              'email'=>'required|min:1',
-              'phone'=>'required|min:1'
+              'qty' =>'required|min:1',
+              'time'=>'required|min:1',
+              'size'=>'required|min:1'
           ]);
   
           Devis::create($data); 
   
-          return redirect()->route('devis.index');
+          return redirect()->route('devis.index', $request);
       }
 
       public function downloadPDF($id) {
