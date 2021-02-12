@@ -111,8 +111,6 @@
                     </ul>
                 </div>
             </div>
-            <a href="{{route('cart.index')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
-            <!-- le span permet d'afficher le nombre d'article dans le panier -->
         </nav>
         @if (session('success'))
         <div class="alert alert-success">

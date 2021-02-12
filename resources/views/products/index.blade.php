@@ -21,7 +21,7 @@
         <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
             @foreach ($products as $product)
             <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <form action="{{ route('cart.store') }}" method="POST">
+                <form action="{{ route('cart.store_product') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                     <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('{{$product->image}}')">

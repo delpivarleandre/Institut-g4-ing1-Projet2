@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Session;
@@ -15,9 +16,13 @@ class PanierController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index_product()
     {
-        return view('cart.index');
+        return view('cart.product');
+    }
+    public function index_service()
+    {
+        return view('cart.service');
     }
 
     /**
@@ -36,7 +41,7 @@ class PanierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store_product(Request $request)
     {
         $duplicata = Cart::search(function ($cartItem, $rowId) use ($request) {
             return $cartItem->id == $request->product_id;
@@ -51,6 +56,23 @@ class PanierController extends Controller
         Cart::add($product->id, $product->title, 1, $product->price)
             ->associate('App\Models\Product');
         return redirect()->route('products.index')->with('success', 'Le produit a bien été ajouté.');
+    }
+
+    public function store_service(Request $request)
+    {
+        $duplicata = Cart::search(function ($cartItem, $rowId) use ($request) {
+            return $cartItem->id == $request->service_id;
+        });
+
+        if ($duplicata->isNotEmpty()) {
+            return redirect()->route('services.index')->with('success', 'Le Service a déjà été ajouté.');
+        }
+
+        $service = Service::find($request->service_id);
+
+        Cart::add($service->id, $service->title, 1, $service->price)
+            ->associate('App\Models\Service');
+        return redirect()->route('services.index')->with('success', 'Le service a bien été ajouté.');
     }
 
     /**
@@ -82,7 +104,16 @@ class PanierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $rowId)
+    public function update_product(Request $request, $rowId)
+    {
+        $data = $request->json()->all();
+
+        Cart::update($rowId, $data['qty']);
+        session()->flash('success_message', 'La quantité a bien été ajouté');
+        return response()->json(['success' => true]);
+    }
+
+    public function update_service(Request $request, $rowId)
     {
         $data = $request->json()->all();
 
@@ -97,10 +128,16 @@ class PanierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($rowId)
+    public function destroy_product($rowId)
     {
         Cart::remove($rowId);
 
         return back()->with('success', 'Le produit a été supprimé.');
+    }
+    public function destroy_service($rowId)
+    {
+        Cart::remove($rowId);
+
+        return back()->with('success', 'Le service a été supprimé.');
     }
 }

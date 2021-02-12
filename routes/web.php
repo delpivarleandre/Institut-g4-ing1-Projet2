@@ -56,14 +56,20 @@ Route::get('/service/{service}', 'ServiceController@show')->name('services.show'
 Route::post('comments/{product}', 'CommentController@store')->name('comments.store');
 
 /* Cart Routes */
-Route::get('/panier', 'PanierController@index')->name('cart.index');
-Route::post("/panier/ajouter", 'PanierController@store')->name('cart.store');
-Route::delete('/panier/{rowId}', 'PanierController@destroy')->name('cart.destroy');
-Route::patch("/panier/{rowId}", 'PanierController@update')->name('cart.update');
-Route::get('/videpanier', function () {
-    Cart::destroy(); 
-});
+Route::get('/panier/produit', 'PanierController@index_product')->name('cart.product');
+Route::get('/panier/service', 'PanierController@index_service')->name('cart.service');
 
+Route::post("/panier/produit/ajouter", 'PanierController@store_product')->name('cart.store_product');
+Route::post("/panier/service/ajouter", 'PanierController@store_service')->name('cart.store_service');
+Route::delete('/panier/produit/{rowId}', 'PanierController@destroy_product')->name('cart.destroy_product');
+Route::delete('/panier/service/{rowIds}', 'PanierController@destroy_service')->name('cart.destroy_service');
+Route::patch("/panier/produit/{rowId}", 'PanierController@update_product')->name('cart.update_product');
+Route::patch("/panier/service/{rowIds}", 'PanierController@update_service')->name('cart.update_service');
+//Route::get('/videpanier', function () {
+    Cart::destroy(); 
+//});
+//Route::delete("/videpanier/produit",'PanierController@destroy_product')->name('cart.destroy_product');
+//Route::delete("/videpanier/service",'PanierController@destroy_service')->name('cart.destroy_service');
 /* Checkout Routes */
 Route::get('/paiement', 'CheckoutController@index')->name('checkout.index');
 Route::post('/paiement', 'CheckoutController@store')->name('checkout.store');
