@@ -1,16 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="my-8">
 
+<main class="my-8">
+    <h1 class="text-center mb-4 mr-5 font-weight-bold text-4xl">Nos produits </h1>
     <div class="container mx-auto px-6">
-        <h1 class="text-center">Les produits</h1>
-        <form action="{{ route('products.search') }}" class="d-flex mr-3">
-            <div class="form-group mb-0 mr-1">
-                <input type="text" name="q" class="form-control" value="{{ request()->q ?? '' }}">
-            </div>
-            <button type="submit" class="btn btn-info"><i class="fa fa-search" aria-hidden="true"></i></button>
-        </form>
+        <div class="d-flex justify-content-center">
+            <form action="{{ route('products.search') }}" class="d-flex mr-3 ">
+                <div class="form-group mb-0 mr-1">
+                    <input type="text" name="q" class="form-control" value="{{ request()->q ?? '' }}">
+                </div>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+        <h1 class="text-center mt-2 mr-5  font-italic">Recherche ton produit !</h1>
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
                 @foreach (App\Models\Category::all() as $category)
@@ -41,12 +44,14 @@
                 </div>
             </div>
             @endforeach
-            {{ $products->appends(request()->input())->links() }}
+            
         </div>
 
     </div>
 
 </main>
 
-
+<div class="d-flex justify-content-center">
+    {{ $products->links('pagination::bootstrap-4') }}
+</div>
 @endsection

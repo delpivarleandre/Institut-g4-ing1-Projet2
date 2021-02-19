@@ -2,44 +2,16 @@
 
 @section('content')
 <div class="container mx-auto px-6">
+    <h1 class="text-center mb-4 mr-5 font-weight-bold text-4xl"> Le service {{$service->title}} </h1>
     <div class="row mb-2">
         <div class="col-md-12">
-            <h1 class="text-center mb-2 font-weight-bold">Faite votre choix et générer votre devis !</h1>
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
-                    <form action="{{route('devis.store')}}" method="POST">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    <form action="{{ route('cart.store_service') }}" method="POST">
                         @csrf
-                        <div class="form-group">
-                            <label for="qty">Nombre de {{$service->title}} : </label>
-                            <input type="number" class="form-control @error('qty') is-invalid @enderror" name="qty" id="qty"></input>
-                            @error('qty')
-                            <div class="invalid-feedback">{{$errors->first('qty')}}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="time">Durée de location (en jours) : </label>
-                            <input type="number" class="form-control @error('time') is-invalid @enderror" name="time" id="time"></input>
-                            @error('time')
-                            <div class="invalid-feedback">{{$errors->first('time')}}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="size">Taille  : </label>
-                            <select id="size" class="form-control" name="size">
-                                <option disabled selected> Choisir une taille</option>
-                                <option value="petit">Petit</option>
-                                <option value="moyen">Moyen</option>
-                                <option value="gros">Gros</option>
-                            </select>
-                            @error('size')
-                            <div class="invalid-feedback">{{$errors->first('size')}}</div>
-                            @enderror
-                        </div>
-                    
-                    
-                    
-                        <button type="submit" class="btn btn-primary"> Demander un devis</button>  
-                    
+                        <input type="hidden" name="service_id" value="{{ $service->id }}">
+                        <button type="submit" class="mt-5 ml-5 btn btn-success">Saisi ta demande et génére ton devis !</button>
                     </form>
                 </div>
                 <div class="col-auto d-none d-lg-block">

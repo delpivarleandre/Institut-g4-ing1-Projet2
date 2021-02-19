@@ -40,11 +40,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('presentation.index') }}">Présentation</a>
                     </li>
-                    @can('access-product')
+                    @can('is_particulier')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('products.index') }}">Produits</a>
                     </li>
-                    @elsecan('access-service')
+                    @elsecan('is_pro')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
@@ -92,9 +92,13 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                @cannot('edit-users')
-                                    <a class="dropdown-item" href="{{ route('orders.index') }}">Mes commandes</a>
-                                @endcannot
+                                @can('is_pro')
+                                    <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
+                                @endcan
+                                @can('is_particulier')
+                                    <a class="dropdown-item" href="{{ route('orders.index_product') }}">Mes commandes</a>
+                                @endcan
+
                                 @can('manage-users')
                                     <a href="{{route('admin.dashboard.index')}}" class="dropdown-item">Panel d'administration</a>
                                 @endcan
@@ -111,9 +115,12 @@
                     </ul>
                 </div>
             </div>
-            <!--AFFICHER QUE EN PARTICULIER-->
+            @can('is_pro')
             <a href="{{route('cart.service')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
-            <!-- le span permet d'afficher le nombre d'article dans le panier -->
+            @endcan
+            @can('is_particulier')
+            <a href="{{route('cart.product')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
+            @endcan
         </nav>
         @if (session('success'))
         <div class="alert alert-success">

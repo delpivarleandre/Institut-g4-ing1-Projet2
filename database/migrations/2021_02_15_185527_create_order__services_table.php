@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDevisTable extends Migration
+class CreateOrderServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDevisTable extends Migration
      */
     public function up()
     {
-        Schema::create('devis', function (Blueprint $table) {
+        Schema::create('order__services', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('payment_intent_id')->unique();
             $table->integer('amount');
@@ -31,6 +31,6 @@ class CreateDevisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('devis');
+        Schema::dropIfExists('order__services');
     }
 }

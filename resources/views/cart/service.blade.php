@@ -17,10 +17,13 @@
                                         <div class="p-2 px-3 text-uppercase">Service</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Prix</div>
+                                        <div class="py-2 text-uppercase">Temps de location</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Quantité</div>
+                                        <div class="py-2 text-uppercase">Taille</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Emqtyment</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
                                         <div class="py-2 text-uppercase">Actions</div>
@@ -34,21 +37,19 @@
                                         <div class="p-2">
                                             <img src="{{ $service->model->image }}" alt="" width="70" class="img-fluid rounded shadow-sm">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0"><a href="{{ route('services.show', $service->model->id) }}" class="text-dark d-inline-block align-middle">{{ $service->model->title }}</a>
+                                                <h5 class="mb-0">{{ $service->model->title }}</h5>
                                             </div>
                                         </div>
                                     </th>
+
                                     <td class="border-0 align-middle">
-                                        <strong>{{ getPrice($service->subtotal())}}</strong>
+                                        <select name="qty" id="{{$key}}qty" data-id="{{ $service->rowId }}" class="custom-select" onchange="qty('{{ $service->rowId }}','{{$key}}')">
+                                            @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ $i == $service->qty ? 'selected' : ''}}>
+                                                {{ $i }}
+                                                </option>
+                                                @endfor
+                                        </select>
                                     </td>
-                                    <td class="border-0 align-middle"><strong>
-                                            <select name="qty" id="{{$key}}qty" data-id="{{ $service->rowId }}" class="custom-select" onchange="qty('{{ $service->rowId }}','{{$key}}')">
-                                                @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ $i == $service->qty ? 'selected' : ''}}>
-                                                    {{ $i }}
-                                                    </option>
-                                                    @endfor
-                                            </select>
-                                        </strong></td>
                                     <td class="border-0 align-middle">
                                         <form action="{{ route('cart.destroy_service', $service->rowId) }}" method="POST">
                                             @csrf
@@ -63,20 +64,10 @@
                     </div>
                     <div class="row  p-4 bg-white rounded shadow-sm">
                         <div class="col-lg-12">
-                            <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Détails
-                                de la commande :
+                            <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">
                             </div>
                             <div class="p-4">
-                                <ul class="list-unstyled mb-4">
-                                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted mr-2">Sous-total </strong><strong>{{ getPrice(Cart::subtotal()) }}</strong>
-                                    </li>
-                                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Taxe</strong><strong>{{ getPrice(Cart::tax()) }}</strong>
-                                    </li>
-                                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                                        <h5 class="font-weight-bold">{{ getPrice(Cart::total()) }}</h5>
-                                    </li>
-                                </ul>
-                                <a href="{{route('checkout.index')}}" class="btn btn-dark rounded-pill py-2 btn-block ">Passer à la caisse</a>
+                                <a href="{{route('checkout.index_service')}}" class="btn btn-dark rounded-pill py-2 btn-block ">Passe a la caisse pour générer ton devis !</a>
                             </div>
                         </div>
                     </div>
@@ -117,6 +108,7 @@
             console.log(error);
         });
     }
+
 </script>
 
 @endsection

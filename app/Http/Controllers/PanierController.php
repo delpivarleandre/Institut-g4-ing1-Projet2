@@ -50,7 +50,6 @@ class PanierController extends Controller
         if ($duplicata->isNotEmpty()) {
             return redirect()->route('products.index')->with('success', 'Le produit a déjà été ajouté.');
         }
-
         $product = Product::find($request->product_id);
 
         Cart::add($product->id, $product->title, 1, $product->price)
@@ -64,15 +63,15 @@ class PanierController extends Controller
             return $cartItem->id == $request->service_id;
         });
 
-        if ($duplicata->isNotEmpty()) {
-            return redirect()->route('services.index')->with('success', 'Le Service a déjà été ajouté.');
-        }
 
+        if ($duplicata->isNotEmpty()) {
+            return redirect()->route('cart.service')->with('success', 'Le Service a déjà été ajouté.');
+        }
         $service = Service::find($request->service_id);
 
         Cart::add($service->id, $service->title, 1, $service->price)
             ->associate('App\Models\Service');
-        return redirect()->route('services.index')->with('success', 'Le service a bien été ajouté.');
+        return redirect()->route('cart.service')->with('success', 'Le service a bien été ajouté.');
     }
 
     /**

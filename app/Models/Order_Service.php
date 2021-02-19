@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Devis extends Model
+class Order_Service extends Model
 {
-    public $fillable = ['time', 'qty', 'size'];
-
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

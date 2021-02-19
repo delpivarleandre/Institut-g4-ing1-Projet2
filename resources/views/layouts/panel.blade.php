@@ -92,9 +92,6 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                @cannot('edit-users')
-                                    <a class="dropdown-item" href="{{ route('orders.index') }}">Mes commandes</a>
-                                @endcannot
                                 @can('manage-users')
                                     <a href="{{route('admin.dashboard.index')}}" class="dropdown-item">Panel d'administration</a>
                                 @endcan

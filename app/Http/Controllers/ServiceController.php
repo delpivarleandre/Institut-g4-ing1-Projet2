@@ -14,7 +14,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::inRandomOrder()->take(3)->get();
+        $services = Service::take(4)->get();
 
         return view('services.index')->with('services', $services);
     }
