@@ -56,18 +56,22 @@ Route::get('/service/{service}', 'ServiceController@show')->name('services.show'
 Route::post('comments/{product}', 'CommentController@store')->name('comments.store');
 
 /* Cart Routes */
-Route::get('/panier', 'PanierController@index')->name('cart.index');
-Route::post("/panier/ajouter", 'PanierController@store')->name('cart.store');
-Route::delete('/panier/{rowId}', 'PanierController@destroy')->name('cart.destroy');
-Route::patch("/panier/{rowId}", 'PanierController@update')->name('cart.update');
-Route::get('/videpanier', function () {
-    Cart::destroy(); 
-});
+Route::get('/panier/produit', 'PanierController@index_product')->name('cart.product');
+Route::get('/panier/service', 'PanierController@index_service')->name('cart.service');
+Route::post("/panier/produit/ajouter", 'PanierController@store_product')->name('cart.store_product');
+Route::post("/panier/service/ajouter", 'PanierController@store_service')->name('cart.store_service');
+Route::delete('/panier/produit/{rowId}', 'PanierController@destroy_product')->name('cart.destroy_product');
+Route::delete('/panier/service/{rowIds}', 'PanierController@destroy_service')->name('cart.destroy_service');
+Route::patch("/panier/produit/{rowId}", 'PanierController@update_product')->name('cart.update_product');
+Route::patch("/panier/service/{rowId}", 'PanierController@update_service')->name('cart.update_service');
 
 /* Checkout Routes */
-Route::get('/paiement', 'CheckoutController@index')->name('checkout.index');
-Route::post('/paiement', 'CheckoutController@store')->name('checkout.store');
-Route::get('/merci', 'CheckoutController@thankyou')->name('checkout.thankyou');
+Route::get('/paiements', 'CheckoutController@index_product')->name('checkout.index_product');
+Route::get('/paiement', 'CheckoutController@index_service')->name('checkout.index_service');
+Route::post('/paiement', 'CheckoutController@store_service')->name('checkout.store_service');
+Route::post('/paiements', 'CheckoutController@store_product')->name('checkout.store_product');
+Route::get('/merci', 'CheckoutController@thankyou_service')->name('checkout.thankyou_service');
+Route::get('/mercis', 'CheckoutController@thankyou_product')->name('checkout.thankyou_product');
 
 /* Authentification Routes */
 Auth::routes();
@@ -89,15 +93,15 @@ Route::get('/presentation', function () {
 
 
 //Affichage de la vue Mes commandes
+Route::get('/mescommandess', function () {
+    return view('orders.index_product');
+})->name('orders.index_product');
+
 Route::get('/mescommandes', function () {
-    return view('orders.index');
-})->name('orders.index');
+    return view('orders.index_service');
+})->name('orders.index_service');
 
 //
 Route::get('/paneladmin', function () {
     return view('admin.dashboard.index');
 })->name('admin.dashboard.index');
-
-Route::get('/devis', [DevisController::class, 'showDevis'])->name('devis.index');
-
-Route::get('/devis/pdf', [DevisController::class, 'createPDF']);

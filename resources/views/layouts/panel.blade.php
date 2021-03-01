@@ -40,11 +40,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('presentation.index') }}">Présentation</a>
                     </li>
-                    @can('is_particulier')
+                    @can('access-product')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('products.index') }}">Produits</a>
                     </li>
-                    @elsecan('is_pro')
+                    @elsecan('access-service')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
@@ -92,13 +92,6 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                @can('is_pro')
-                                    <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
-                                @endcan
-                                @can('is_particulier')
-                                    <a class="dropdown-item" href="{{ route('orders.index_product') }}">Mes commandes</a>
-                                @endcan
-
                                 @can('manage-users')
                                     <a href="{{route('admin.dashboard.index')}}" class="dropdown-item">Panel d'administration</a>
                                 @endcan
@@ -115,12 +108,6 @@
                     </ul>
                 </div>
             </div>
-            @can('is_pro')
-            <a href="{{route('cart.service')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
-            @endcan
-            @can('is_particulier')
-            <a href="{{route('cart.product')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
-            @endcan
         </nav>
         @if (session('success'))
         <div class="alert alert-success">
@@ -128,7 +115,39 @@
         </div>
         @endif
         <main class="py-4">
-            @yield('content')
+            <div>                
+                <div>
+                    <div class="flex  bg-gray-100 dark:bg-gray-800 font-roboto">
+                        <div class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
+                
+                        <div class="fixed z-30 inset-y-0 left-0 w-60 transition duration-300 transform bg-white dark:bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
+                
+                            <nav class="flex flex-col mt-10 px-4 text-center">
+                                <a href="{{route('admin.produits.index')}}"
+                                    class="mt-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-700 text-decoration-none dark:hover:text-gray-100  hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Gestion des produits</a>
+                                <a href="{{route('admin.category.index')}}"
+                                    class="mt-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-700 text-decoration-none dark:hover:text-gray-100  hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Gestion des catégories</a> 
+                                <a href="{{route('admin.services.index')}}"
+                                    class="mt-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-700 text-decoration-none dark:hover:text-gray-100  hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Gestion des services</a>
+                                <a href="{{route('admin.produits.ajouter')}}"
+                                    class="mt-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-700 text-decoration-none dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Ajout de produits</a>
+                                <a href="{{route('admin.category.ajouter')}}"
+                                    class="mt-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-700 text-decoration-none dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Ajouts de catégories</a>
+                                <a href="{{route('admin.services.ajouter')}}"
+                                    class="mt-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-700 text-decoration-none dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Ajout des services</a>
+                                <a href="{{route('admin.users.index')}}"
+                                    class="mt-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-700 text-decoration-none dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-800 rounded">Listes des utilisateurs</a>
+                            </nav>
+                        </div>
+                
+                        <div class="flex-1 flex flex-col overflow-hidden">    
+                            <main class="flex-1 overflow-x-hidden overflow-y-auto">
+                                @yield('content')
+                            </main>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
     @yield('extra-js')

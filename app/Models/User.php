@@ -58,7 +58,12 @@ class User extends Authenticatable
 
     public function orders()
     {
-        return $this->hasMany('App\Models\Order');
+        return $this->hasMany('App\Models\Order')->orderBy('orders.created_at', 'DESC');
+
+    }
+    public function orders_service()
+    {
+        return $this->hasMany('App\Models\Order_Service');
     }
     
 }

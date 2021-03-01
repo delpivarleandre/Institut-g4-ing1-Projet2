@@ -24,4 +24,9 @@ class Service extends Model
 
         return number_format($price, 2, ', ', ' ') . ' €';
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }
