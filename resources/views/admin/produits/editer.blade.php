@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.panel')
 
 @section('content')
 
@@ -30,6 +30,17 @@
             @error('price')
             <div class="invalid-feedback">{{$errors->first('price')}}</div>
             @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="cat">Categories : </label>
+                @foreach (App\Models\Category::all() as $category)
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" name="cat[]" value="{{ $category->id}}" id="{{$category->id}}" @foreach ($product->categories as $categoryproduit) @if ($categoryproduit->id == $category->id) checked @endif @endforeach>
+        
+                        <label for="{{$category->id}}" class="form-check-label">{{$category->name}}</label>
+                    </div>
+                @endforeach
         </div>
 
         

@@ -24,7 +24,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <form action="{{route('checkout.store')}}" method="post" id="payment-form">
+                    <form action="{{route('checkout.store_product')}}" method="post" id="payment-form">
                         @csrf
                         <div class="form-group">
                             <div class="card-header">
@@ -35,6 +35,8 @@
                             <div class="card-body">
                                 <div id="card-element">
                                     <!-- A Stripe Element will be inserted here. -->
+                                
+                                    
                                 </div>
                                 <!-- Used to display form errors. -->
                                 <div id="card-errors" role="alert"></div>
@@ -71,7 +73,7 @@
             }
         };
         const stripe = Stripe('{{ $stripe_key }}', {
-            locale: 'en'
+            locale: 'fr'
         }); // Create a Stripe client.
         const elements = stripe.elements(); // Create an instance of Elements.
         const cardElement = elements.create('card', {
@@ -106,7 +108,7 @@
                         errorElement.textContent = result.error.message;
                     } else {
                         var token = '{{ csrf_token() }}';
-                        fetch('/paiement', {
+                        fetch('/paiements', {
                             headers: {
                                 "Content-Type": "application/json",
                                 "Accept": "application/json, text-plain, /",
@@ -123,7 +125,7 @@
                                 console.log('Mauvaise réponse du réseau');
                             }
 
-                            document.location.href = "/merci";
+                            document.location.href = "/mercis";
                         }).catch((error) => {
                             console.error(error)
                         })

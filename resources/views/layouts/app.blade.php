@@ -35,32 +35,32 @@
             <div class="container">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('structure.acceuil') }}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('acceuil.index') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.presentation') }}">Présentation</a>
+                        <a class="nav-link" href="{{ route('presentation.index') }}">Présentation</a>
                     </li>
-                    @can('access-product')
+                    @can('is_particulier')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.produit') }}">Produits</a>
+                        <a class="nav-link" href="{{ route('products.index') }}">Produits</a>
                     </li>
-                    @elsecan('access-service')
+                    @elsecan('is_pro')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.service') }}">Services</a>
+                        <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
                     @endcan
                     @can('edit-users')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.produit') }}">Produits</a>
+                        <a class="nav-link" href="{{ route('products.index') }}">Produits</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.service') }}">Services</a>
+                        <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
                     @endcan
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('structure.contact') }}">Contact</a>
+                        <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
                     </li>
                 </ul>
 
@@ -92,16 +92,15 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                @cannot('edit-users')
-                                    <a class="dropdown-item" href="{{ route('dashboard') }}">Mes commandes</a>
-                                @endcannot
-                                @can('manage-users')
-                                    <a href="{{route('admin.users.index')}}" class="dropdown-item">Liste des utilisateurs</a>
+                                @can('is_pro')
+                                    <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
                                 @endcan
-                                @can('edit-users')
-                                    <a href="{{route('admin.produits.ajouter')}}" class="dropdown-item">Ajouter des articles</a>
-                                    <a href="{{route('admin.produits.index')}}" class="dropdown-item">Gestion des articles</a>
+                                @can('is_particulier')
+                                    <a class="dropdown-item" href="{{ route('orders.index_product') }}">Mes commandes</a>
+                                @endcan
+
+                                @can('manage-users')
+                                    <a href="{{route('admin.dashboard.index')}}" class="dropdown-item">Panel d'administration</a>
                                 @endcan
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">Déconnexion</a>
@@ -116,8 +115,12 @@
                     </ul>
                 </div>
             </div>
-            <a href="{{route('structure.panier')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
-            <!-- le span permet d'afficher le nombre d'article dans le panier -->
+            @can('is_pro')
+            <a href="{{route('cart.service')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
+            @endcan
+            @can('is_particulier')
+            <a href="{{route('cart.product')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
+            @endcan
         </nav>
         @if (session('success'))
         <div class="alert alert-success">

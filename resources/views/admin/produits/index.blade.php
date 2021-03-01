@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.panel')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Gestion des articles</div>
+                <div class="card-header">Gestion des produits</div>
 
                 <div class="card-body">
 
@@ -23,8 +23,8 @@
                         <td>{{$product->title}}</td>
                         <td>{{$product->getPrice()}}</td>
                         <td>
-                            <a href="{{route('structure.affichage_produit', $product)}}" class=" btn btn-primary">Voir</a>
-                            <a href="{{route('admin.produits.editer', $product)}}" class=" btn btn-warning">Edit</a>
+                            <a href="{{route('products.show', $product)}}" class=" btn btn-primary">Voir</a>
+                            <a href="{{route('product.edit', $product)}}" class=" btn btn-warning">Edit</a>
                             <form action="{{route('product.destroy', $product)}}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')

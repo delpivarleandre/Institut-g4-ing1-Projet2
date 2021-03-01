@@ -34,7 +34,7 @@
                                         <div class="p-2">
                                             <img src="{{ $product->model->image }}" alt="" width="70" class="img-fluid rounded shadow-sm">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0"><a href="{{ route('structure.affichage_produit', $product->model->id) }}" class="text-dark d-inline-block align-middle">{{ $product->model->title }}</a>
+                                                <h5 class="mb-0"><a href="{{ route('products.show', $product->model->id) }}" class="text-dark d-inline-block align-middle">{{ $product->model->title }}</a>
                                                 </h5><span class="text-muted font-weight-normal font-italic d-block">Category:</span>
                                             </div>
                                         </div>
@@ -47,11 +47,11 @@
                                                 @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ $i == $product->qty ? 'selected' : ''}}>
                                                     {{ $i }}
                                                     </option>
-                                                    @endfor
+                                                @endfor
                                             </select>
                                         </strong></td>
                                     <td class="border-0 align-middle">
-                                        <form action="{{ route('panier.destroy', $product->rowId) }}" method="POST">
+                                        <form action="{{ route('cart.destroy_product', $product->rowId) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Supprimer</button>
@@ -77,7 +77,7 @@
                                         <h5 class="font-weight-bold">{{ getPrice(Cart::total()) }}</h5>
                                     </li>
                                 </ul>
-                                <a href="{{route('checkout.index')}}" class="btn btn-dark rounded-pill py-2 btn-block ">Passer à la caisse</a>
+                                <a href="{{route('checkout.index_product')}}" class="btn btn-dark rounded-pill py-2 btn-block ">Passer à la caisse</a>
                             </div>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
         console.log(rowId)
         var select = document.getElementById(key + 'qty')
         var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        fetch(`/panier/${rowId}`, {
+        fetch(`/panier/produit/${rowId}`, {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json, text-plain, */*",
