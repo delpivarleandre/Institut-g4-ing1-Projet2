@@ -6,6 +6,7 @@
         <div class="jumbotron text-center">
             <h1 class="display-3">Merci !</h1>
             <p class="lead"><strong>Votre commande a été traitée avec succès</strong></p>
+            <p class="lead"><strong><a href="{{route('orders.index_service')}}">Voir mes commandes</a></strong></p>
             <hr>
             <p>
                 Vous rencontrez un problème ? <a href="{{route('contact.index')}}">Nous contactez</a>
@@ -15,5 +16,5 @@
             </p>
         </div>
     </div>
-    
+
 @endsection
