@@ -9,7 +9,7 @@
                 <div class="card-header">Ajouter un article</div>
                 <div class="card-body">
                     <form action="{{route('product.store')}}" method="POST">
-                        @csrf 
+                        @csrf
                         <div class="form-group">
                             <label for="title">Titre : </label>
                             <input type="text" class=" form-control @error('title') is-invalid @enderror" name="title" id="title"></input>
@@ -32,17 +32,17 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="cat">Categories : </label>
+                            <label for="cat">Catégories : </label>
                                 @foreach (App\Models\Category::all() as $category)
                                 <div class="form-group form-check">
                                     <input type="checkbox" class="form-check-input" name="cat[]" value="{{ $category->id}}" id="{{$category->id}}" >
-                    
+
                                     <label for="{{$category->id}}" class="form-check-label">{{$category->name}}</label>
                                 </div>
                                 @endforeach
                         </div>
-                        <button type="submit" class="btn btn-primary"> Ajouter l'article au catalogue </button>  
-                    </form> 
+                        <button type="submit" class="btn btn-primary"> Ajouter l'article au catalogue </button>
+                    </form>
                 </div>
             </div>
         </div>

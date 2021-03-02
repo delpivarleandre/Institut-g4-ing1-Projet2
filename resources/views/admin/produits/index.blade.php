@@ -17,18 +17,18 @@
                         <th scope ="col">Actions</th>
                         </tr>
                     </thread>
-                    <tbody> 
+                    <tbody>
                    @foreach ($products as $product)
                         <tr>
                         <td>{{$product->title}}</td>
                         <td>{{$product->getPrice()}}</td>
                         <td>
                             <a href="{{route('products.show', $product)}}" class=" btn btn-primary">Voir</a>
-                            <a href="{{route('product.edit', $product)}}" class=" btn btn-warning">Edit</a>
+                            <a href="{{route('product.edit', $product)}}" class=" btn btn-warning">Modifier</a>
                             <form action="{{route('product.destroy', $product)}}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Sup</button>
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
                             </form>
                         </td>
                         </tr>
