@@ -4,11 +4,13 @@
 
 
 @if (Cart::count() > 0)
-<div class="px-4 px-lg-0">
-    <div class="pb-5">
-        <div class="container">
+<div class="px-4 px-lg-0 pt-0">
+        <div class="w-100 headerpanier">
+            <h1 class="text-center position-relative titrepanier text-white">PANIER</h1>
+        </div>
+        <div class="container pt-16">
             <div class="row">
-                <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+                <div class="col-lg-12 p-5 bg-white rounded30 shadow-sm mb-5">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -31,11 +33,10 @@
                                 @foreach (Cart::content() as $key => $product)
                                 <tr>
                                     <th scope="row" class="border-0">
-                                        <div class="p-2">
+                                        <div class="p-2 row">
                                             <img src="{{ $product->model->image }}" alt="" width="70" class="img-fluid rounded shadow-sm">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0"><a href="{{ route('products.show', $product->model->id) }}" class="text-dark d-inline-block align-middle">{{ $product->model->title }}</a>
-                                                </h5><span class="text-muted font-weight-normal font-italic d-block">Category:</span>
+                                                <h5 class="mb-0"><a href="{{ route('products.show', $product->model->id) }}" class="text-dark d-inline-block align-middle">{{ $product->model->title }}</a></h5>
                                             </div>
                                         </div>
                                     </th>
@@ -84,7 +85,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 @else
 <div class="col-md-12">
