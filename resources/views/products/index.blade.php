@@ -10,7 +10,11 @@
                 <div class="form-group mb-0 mr-1">
                     <input type="text" name="q" class="form-control" value="{{ request()->q ?? '' }}">
                 </div>
+<<<<<<< Updated upstream
                 <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+=======
+                <button type="submit" class="btn bgcolorblue transition duration-500 ease"><i class="fa fa-search text-white" aria-hidden="true"></i></button>
+>>>>>>> Stashed changes
             </form>
         </div>
         <h1 class="text-center mt-2 mr-5  font-italic">Recherche ton produit !</h1>
@@ -51,7 +55,11 @@
 
 </main>
 
+<<<<<<< Updated upstream
 <div class="d-flex justify-content-center">
+=======
+<div class="d-flex justify-content-center colorblue mb-32">
+>>>>>>> Stashed changes
     {{ $products->links('pagination::bootstrap-4') }}
 </div>
 @endsection

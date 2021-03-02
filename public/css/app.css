@@ -6,6 +6,76 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+<<<<<<< Updated upstream
+=======
+/* PERSO */
+
+.productstitle{
+    color: #22577A;
+}
+.productsborder{
+    border-bottom: 7px #78BE14 solid;
+}
+.bgcolorblue{
+    background-color: #22577A !important;
+}
+.colorblue{
+    color: #22577A !important;
+}
+.page-item.active .page-link{
+    background-color: #22577A !important;
+    border-color: #22577A !important;
+}
+.ml-15{
+    margin-left: 15px;
+}
+.nounderline {
+    text-decoration: none;
+}
+.nounderline:hover{
+    text-decoration: none;
+}
+.hovergreen:hover{
+    color: #78BE14;
+}
+.roundedborder{
+    border-radius: 50%;
+    border: 10px solid #22577A;
+    box-shadow: 0 0 0 10px white inset;
+    box-sizing: border-box;
+}
+.buttonsbis {
+    background-color: #22577A;
+    color: white;
+    font-size: 16px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: #22577A 2px solid;
+    transition: 0.8s all;
+    border-radius: 30px;
+}
+.buttonsbis:hover{
+     background-color: transparent;
+     color: #22577A ;
+     border: #22577A 2px solid ;
+}
+.headerpanier{
+    background-image: url("/img/eolienne.jpg");
+    background-repeat: no-repeat;
+    height: 600px;
+}
+.titrepanier{
+    top: 45%;
+    font-size: 64px;
+}
+.rounded30{
+    border-radius: 30px;
+}
+.titreproduitseul{
+    height: 100px;
+}
+/* MAIN */
+>>>>>>> Stashed changes
 
 :root {
   --blue: #3490dc;
