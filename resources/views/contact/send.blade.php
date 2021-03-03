@@ -1,9 +1,10 @@
 <h2>Votre demande a bien été prise en compte</h2> <br><br>
 
-Votre demande : 
+Votre demande :
 
 Nom du client :  {{ $name }}<br>
 Email du client :  {{ $email }}<br>
+Région du client :  {{ $region }}<br>
 Sujet de la demande:  {{ $subject }}<br>
 Description du problème: <br> {{ $contenu }}<br><br>
 

@@ -6,8 +6,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-<<<<<<< Updated upstream
-=======
+
 /* PERSO */
 
 .productstitle{
@@ -19,6 +18,7 @@
 .bgcolorblue{
     background-color: #22577A !important;
 }
+
 .colorblue{
     color: #22577A !important;
 }
@@ -26,6 +26,7 @@
     background-color: #22577A !important;
     border-color: #22577A !important;
 }
+
 .ml-15{
     margin-left: 15px;
 }
@@ -61,7 +62,9 @@
 }
 .headerpanier{
     background-image: url("/img/eolienne.jpg");
+
     background-repeat: no-repeat;
+
     height: 600px;
 }
 .titrepanier{
@@ -75,7 +78,7 @@
     height: 100px;
 }
 /* MAIN */
->>>>>>> Stashed changes
+
 
 :root {
   --blue: #3490dc;
@@ -10973,3 +10976,130 @@ a.text-dark:focus {
   }
 }
 
+/* CSS GENERAL */
+
+
+h1.text-center {
+    color: #22577A;
+    font-family: roboto;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2.8em;
+}
+
+h2.text-center{
+    color: #22577A;
+    font-family: roboto;
+    font-weight: 700;
+    letter-spacing: 0.7;
+    margin-top: 100px;
+}
+
+.imageRound {
+    border-radius: 50%;
+    width: 85%;
+}
+
+div.circle {
+    -moz-border-radius: 335px/335px;
+    -webkit-border-radius: 335px 335px;
+    border-radius: 335px/335px;
+    border: solid 28px #71B7DD;
+    width: 390px;
+    height: 390px;
+    position: absolute;
+    top: 11%;
+    left: 10%;
+    z-index: -1;
+}
+
+.v-heading-v2 {
+    margin: 0 0 50px 0;
+    padding-bottom: 7px;
+    display: inline-block;
+    border-bottom: 9px solid #78BE14;
+}
+
+.h2-title{
+    text-align: center;
+}
+
+.space {
+    height: 100px;
+}
+
+
+/* CSS de la page d'ACCUEIL */
+
+h1.qsm {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.qsm-text {
+    padding-top: 50px;
+    padding-left: 55px !important;
+}
+
+.certifications img{
+    width: 55%;
+    display: inline-block;
+    border-radius: 30px;
+}
+
+/* CSS de la page CONTACT */
+
+#wrapper {
+    margin: 0 auto;
+    width: 100%;
+}
+
+header {
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+    background: white url('../img/contact/banniere-contact-page.jpg') fixed no-repeat center center;
+    background-size: cover;
+    background-position: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    line-height: 2.8em;
+    vertical-align: middle;
+    /*filter: brightness(0.5);*/
+}
+
+header h1{
+    vertical-align: middle;
+    color: #fff !important;
+    margin-top: 120px;
+    text-transform: unset !important;
+}
+
+/* CSS de la page SERVICES */
+
+div.circleServicesDroite {
+    -moz-border-radius: 335px/335px;
+    -webkit-border-radius: 335px 335px;
+    border-radius: 335px/335px;
+    border: solid 28px #78BE14;
+    width: 390px;
+    height: 390px;
+    position: absolute;
+    bottom: 1%;
+    right: -15%;
+    z-index: -1;
+}
+
+div.circleServicesGauche {
+    -moz-border-radius: 335px/335px;
+    -webkit-border-radius: 335px 335px;
+    border-radius: 335px/335px;
+    border: solid 28px #38A3A5;
+    width: 390px;
+    height: 390px;
+    position: absolute;
+    top: 20%;
+    left: -15%;
+    z-index: -1;
+}

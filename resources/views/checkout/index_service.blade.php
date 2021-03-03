@@ -23,9 +23,28 @@
     <div class="container" style="margin-top:10%;margin-bottom:10%">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card">
-                    <form action="{{route('checkout.store_service')}}" method="post" id="payment-form">
-                        @csrf
+                <form action="{{route('checkout.store_service')}}" method="post" id="payment-form">
+                    @csrf
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" id="nom" placeholder="Prénom Nom">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type ="text" maxlength="10" class="form-control" id="phone" placeholder="Numéro de téléphone">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type ="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <input type="text" class="form-control" id="adresse" placeholder="Adresse Postale">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" id="city" placeholder="Ville">
+                        </div>
+                    </div>
+                    <div class="card">
                         <div class="form-group">
                             <div class="card-header">
                                 <label for="card-element">
@@ -35,8 +54,8 @@
                             <div class="card-body">
                                 <div id="card-element">
                                     <!-- A Stripe Element will be inserted here. -->
-                                
-                                    
+
+
                                 </div>
                                 <!-- Used to display form errors. -->
                                 <div id="card-errors" role="alert"></div>
@@ -46,8 +65,8 @@
                         <div class="card-footer">
                             <button id="card-button" class="btn btn-dark" type="submit" data-secret="{{ $intent }}"> Procéder au paiement ({{getPrice(Cart::total())}})</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -97,7 +116,8 @@
             event.preventDefault();
             stripe.handleCardPayment(clientSecret, cardElement, {
                     payment_method_data: {
-                        //billing_details: { name: cardHolderName.value }
+                        billing_details: { name: nom.value, phone : phone.value , email: email.value, address:{ line1 : adresse.value, city : city.value
+                            }}
                     }
                 })
                 .then(function(result) {
@@ -125,12 +145,11 @@
                                 console.log('Mauvaise réponse du réseau');
                             }
 
-                        document.location.href = "/merci";
+                       document.location.href = "/merci";
                         }).catch((error) => {
                             console.error(error)
                         })
                         console.log(result);
-                        console.log("coucou");
                     }
                 });
         });
