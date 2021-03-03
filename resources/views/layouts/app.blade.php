@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('extra-meta')
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Éco Services') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -35,7 +35,7 @@
             <div class="container">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('acceuil.index') }}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('acceuil.index') }}">Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('presentation.index') }}">Présentation</a>
@@ -76,13 +76,13 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">Connexion</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">Inscription</a>
                         </li>
                         @endif
                         @else
@@ -93,31 +93,28 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @can('is_pro')
-                                    <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
+                                <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
                                 @endcan
                                 @can('is_particulier')
-                                    <a class="dropdown-item" href="{{ route('orders.index_product') }}">Mes commandes</a>
+                                <a class="dropdown-item" href="{{ route('orders.index_product') }}">Mes commandes</a>
                                 @endcan
 
                                 @can('manage-users')
-                                    <a href="{{route('admin.dashboard.index')}}" class="dropdown-item">Panel d'administration</a>
+                                <a href="{{route('admin.dashboard.index')}}" class="dropdown-item">Panel d'administration</a>
                                 @endcan
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">Déconnexion</a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
 
-                                </div>
-                            </li>
+                            </div>
+                        </li>
 
                         @endguest
                     </ul>
                 </div>
             </div>
-            @can('is_pro')
-            <a href="{{route('cart.service')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
-            @endcan
             @can('is_particulier')
             <a href="{{route('cart.product')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
             @endcan

@@ -16,16 +16,16 @@
                         <th scope ="col">Actions</th>
                         </tr>
                     </thread>
-                    <tbody> 
+                    <tbody>
                    @foreach ($categories as $categorie)
                         <tr>
                         <td>{{$categorie->name}}</td>
                         <td>
-                            <a href="{{route('category.edit', $categorie)}}" class=" btn btn-warning">Edit</a>
+                            <a href="{{route('category.edit', $categorie)}}" class=" btn btn-warning">Modifier</a>
                             <form action="{{route('category.destroy', $categorie)}}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Sup</button>
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
                             </form>
                         </td>
                         </tr>
