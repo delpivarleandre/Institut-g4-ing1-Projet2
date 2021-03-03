@@ -17,7 +17,7 @@
                             <label for="{{$role->id}}" class="form-check-label">{{$role->name}}</label>
                         </div>
                         @endforeach
-                        <button type="submit" class="btn btn-primary">Modifier les roles </button>
+                        <button type="submit" class="btn btn-primary">Modifier les rôles </button>
                         <a href="{{route('admin.users.index')}}" class="btn btn-danger">Annuler</a>
                     </form>
                 </div>
