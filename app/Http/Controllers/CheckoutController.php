@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 use Stripe\Stripe;
 use App\Models\Order;
 use App\Models\Order_Service;
@@ -11,7 +12,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
-
+use PDF;
 
 class CheckoutController extends Controller
 {
@@ -30,18 +31,19 @@ class CheckoutController extends Controller
 
 
         $payment_intent = PaymentIntent::create([
-            'description' => 'Stripe Test Payment',
             'amount' => round(Cart::total()),
             'currency' => 'eur',
             'description' => 'Nouveau paiement de client ',
             'payment_method_types' => ['card'],
+            'receipt_email' => Auth::user()->email
+
         ]);
         $intent = $payment_intent->client_secret;
 
         return view('checkout.index_product', compact('intent'));;
     }
 
-    public function index_service()
+    public function index_service(Request $request)
     {
         if (Cart::count() <= 0) {
             return redirect()->route('services.index');
@@ -51,11 +53,14 @@ class CheckoutController extends Controller
 
 
         $payment_intent = PaymentIntent::create([
-            'description' => 'Stripe Test Payment',
             'amount' => round(Cart::total()),
             'currency' => 'eur',
             'description' => 'Nouveau paiement de client ',
             'payment_method_types' => ['card'],
+            'receipt_email' => Auth::user()->email,
+            'metadata' => [
+                'name'=>Auth::user()->email
+            ]
         ]);
         $intent = $payment_intent->client_secret;
 
@@ -116,7 +121,6 @@ class CheckoutController extends Controller
     public function store_service(Request $request)
     {
         $data = $request->json()->all();
-
         $order = new Order_Service();
 
         $order->payment_intent_id = $data['paymentIntent']['paymentIntent']['id'];
@@ -133,12 +137,14 @@ class CheckoutController extends Controller
             $services['service_' . $i][] = $service->model->title;
             $services['service_' . $i][] = $service->model->price;
             $services['service_' . $i][] = $service->qty;
+            $services['service_' . $i][] = $service->options;
             $i++;
         }
 
         $order->services = serialize($services);
         $order->user_id = Auth()->user()->id;
         $order->save();
+
 
         if ($data['paymentIntent']['paymentIntent']['status'] === 'succeeded') {
             Cart::destroy();
@@ -148,7 +154,6 @@ class CheckoutController extends Controller
             return response()->json(['error' => 'Payment Intent Not Succeeded']);
         }
     }
-
 
     public function thankyou_product()
     {

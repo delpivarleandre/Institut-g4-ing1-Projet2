@@ -17,16 +17,13 @@
                                         <div class="p-2 px-3 text-uppercase">Service</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Temps de location</div>
+                                        <div class="py-2 text-uppercase">Temps de location (en jours)</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
                                         <div class="py-2 text-uppercase">Taille</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Emqtyment</div>
-                                    </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Actions</div>
+                                        <div class="py-2 text-uppercase">Emplacement</div>
                                     </th>
                                 </tr>
                             </thead>
@@ -34,14 +31,13 @@
                                 @foreach (Cart::content() as $key => $service)
                                 <tr>
                                     <th scope="row" class="border-0">
-                                        <div class="p-2">
+                                        <div class="d-flex">
                                             <img src="{{ $service->model->image }}" alt="" width="70" class="img-fluid rounded shadow-sm">
-                                            <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0">{{ $service->model->title }}</h5>
+                                            <div class="ml-3">
+                                                <h5 class="mt-3">{{ $service->model->title }}</h5>
                                             </div>
                                         </div>
                                     </th>
-
                                     <td class="border-0 align-middle">
                                         <select name="qty" id="{{$key}}qty" data-id="{{ $service->rowId }}" class="custom-select" onchange="qty('{{ $service->rowId }}','{{$key}}')">
                                             @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ $i == $service->qty ? 'selected' : ''}}>
@@ -51,11 +47,17 @@
                                         </select>
                                     </td>
                                     <td class="border-0 align-middle">
-                                        <form action="{{ route('cart.destroy_service', $service->rowId) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                                        </form>
+                                        <select name="size" id="size" class="custom-select">
+                                            <option value="petit" selected >Petit</option>
+                                            <option value="moyen" >Moyen</option>
+                                            <option value="grand" >Grand</option>
+                                        </select>
+                                    </td>
+                                    <td class="border-0 align-middle">
+                                        <select name="place" id="place" class="custom-select">
+                                            <option value="domicile" selected >A domicile</option>
+                                            <option value="entreprise" >A l'entreprise</option>
+                                        </select>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -66,7 +68,14 @@
                         <div class="col-lg-12">
                             <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">
                             </div>
-                            <div class="p-4">
+                            <div class="text-center p-4">
+                                <form action="{{ route('cart.destroy_service', $service->rowId) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Annuler</button>
+                                </form>
+                            </div>
+                            <div class="p-2">
                                 <a href="{{route('checkout.index_service')}}" class="btn btn-dark rounded-pill py-2 btn-block ">Passe a la caisse pour générer ton devis !</a>
                             </div>
                         </div>
@@ -108,7 +117,6 @@
             console.log(error);
         });
     }
-
 </script>
 
 @endsection

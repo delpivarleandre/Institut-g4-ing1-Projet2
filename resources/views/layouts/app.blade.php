@@ -115,9 +115,6 @@
                     </ul>
                 </div>
             </div>
-            @can('is_pro')
-            <a href="{{route('cart.service')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
-            @endcan
             @can('is_particulier')
             <a href="{{route('cart.product')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
             @endcan
