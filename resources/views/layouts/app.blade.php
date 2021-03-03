@@ -51,14 +51,9 @@
                     @endcan
                     @can('edit-users')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('products.index') }}">Produits</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
                     @endcan
-
-
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
                     </li>
@@ -92,10 +87,10 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                @can('is_pro')
+                                @can('is_pros')
                                 <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
                                 @endcan
-                                @can('is_particulier')
+                                @can('is_particuliers')
                                 <a class="dropdown-item" href="{{ route('orders.index_product') }}">Mes commandes</a>
                                 @endcan
 
