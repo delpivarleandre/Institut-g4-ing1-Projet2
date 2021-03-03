@@ -2,10 +2,9 @@
 
 Votre demande :
 
-Nom du client :  {{ $name }}<br>
-Email du client :  {{ $email }}<br>
-Région du client :  {{ $region }}<br>
-Sujet de la demande:  {{ $subject }}<br>
+Nom du client : {{ $name }}<br>
+Email du client : {{ $email }}<br>
+Sujet de la demande: {{ $subject }}<br>
 Description du problème: <br> {{ $contenu }}<br><br>
 
 Ceci est un e-mail automatique. Nous traitons votre demande dans les plus brefs delais.<br>
