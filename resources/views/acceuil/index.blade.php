@@ -62,13 +62,13 @@
             </div>
 
         </div>
-
+        <!--
         <div class="text-center">
             <a href="{{route('services.index')}}"><button class="center bg-green-500 font-semibold text-white p-2 w-32 rounded-full hover:bg-green-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300 m-2" @click="showModal3 = true">
                     Nos services
                 </button></a>
         </div>
-
+    -->
 
 
         <div class="space"></div>
@@ -90,13 +90,13 @@
 
 
         <div class="space"></div>
-
+        <!--
         <div class="text-center">
             <a href="{{route('products.index')}}"><button class="center bg-green-500 font-semibold text-white p-2 w-min rounded-full hover:bg-green-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300 m-2" @click="showModal3 = true">
                     Découvrez nos produits
                 </button></a>
         </div>
-
+    -->
         <div class="space"></div>
 
 

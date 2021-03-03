@@ -47,5 +47,13 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('is_pro', function (User $user) {
             return $user->hasAnyRole(['pro', 'admin']);
         });
+
+        Gate::define('is_particuliers', function (User $user) {
+            return $user->hasAnyRole(['particulier']);
+        });
+
+        Gate::define('is_pros', function (User $user) {
+            return $user->hasAnyRole(['pro']);
+        });
     }
 }
