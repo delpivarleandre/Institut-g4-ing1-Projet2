@@ -51,6 +51,7 @@ Route::get('/search', 'ProductController@search')->name('products.search');
 /* Services Routes */
 Route::get('/service', 'ServiceController@index')->name('services.index');
 Route::get('/service/{service}', 'ServiceController@show')->name('services.show');
+Route::get('generate-pdf/{order}', 'DevisController@generate_PDF')->name('devis.pdf');
 
 /*Comment Product Routes*/
 Route::post('comments/{product}', 'CommentController@store')->name('comments.store');

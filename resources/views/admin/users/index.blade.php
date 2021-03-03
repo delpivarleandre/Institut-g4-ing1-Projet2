@@ -18,7 +18,7 @@
                         <th scope ="col">Actions</th>
                         </tr>
                     </thread>
-                    <tbody> 
+                    <tbody>
                     @foreach ($users as $user)
                         <tr>
                         <td>{{$user->name}}</td>
@@ -26,7 +26,7 @@
                         <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
                         <td>
                             @can('edit-users')
-                            <a href="{{route('admin.users.edit', $user->id)}}"><button class=" btn btn-primary">Editer</button></a>
+                            <a href="{{route('admin.users.edit', $user->id)}}"><button class=" btn btn-primary">Éditer</button></a>
                             @endcan
                             @can('delete-users')
                             <form action="{{route('admin.users.destroy', $user->id)}}" method="POST" class="d-inline">

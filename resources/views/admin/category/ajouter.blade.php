@@ -9,7 +9,7 @@
                 <div class="card-header">Ajouter une nouvelle catégorie</div>
                 <div class="card-body">
                     <form action="{{route('category.store')}}" method="POST">
-                        @csrf 
+                        @csrf
                         <div class="form-group">
                             <label for="name">Nom  : </label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"></input>
@@ -18,8 +18,8 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary"> Ajouter la categorie au catalogue </button>  
-                    </form> 
+                        <button type="submit" class="btn btn-primary"> Ajouter la catégorie au catalogue </button>
+                    </form>
                 </div>
             </div>
         </div>
