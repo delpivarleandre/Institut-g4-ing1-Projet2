@@ -9,6 +9,21 @@
 
 /* PERSO */
 
+header.Page404 {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: white url('../img/404/img-404.jpg') fixed no-repeat center center;
+  background-size: cover;
+  background-position: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  line-height: 2.8em;
+  vertical-align: middle;
+  /*filter: brightness(0.5);*/
+}
+
 .productstitle{
     color: #22577A;
 }
