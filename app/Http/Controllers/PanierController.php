@@ -69,7 +69,7 @@ class PanierController extends Controller
         }
         $service = Service::find($request->service_id);
 
-        Cart::add($service->id, $service->title, 1, $service->price)
+        Cart::add($service->id, $service->title, 1, $service->price )
             ->associate('App\Models\Service');
         return redirect()->route('cart.service')->with('success', 'Le service a bien été ajouté.');
     }
@@ -114,11 +114,6 @@ class PanierController extends Controller
 
     public function update_service(Request $request, $rowId)
     {
-        $data = $request->json()->all();
-
-        Cart::update($rowId, $data['qty']);
-        session()->flash('success_message', 'La quantité a bien été ajouté');
-        return response()->json(['success' => true]);
     }
 
     /**
@@ -137,6 +132,6 @@ class PanierController extends Controller
     {
         Cart::remove($rowId);
 
-        return back()->with('success', 'Le service a été supprimé.');
+        return redirect()->route('services.index');
     }
 }

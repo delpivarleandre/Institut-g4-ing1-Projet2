@@ -17,15 +17,16 @@
                         <div class="card mb-3">
                             <div class="card-header">
                                 Commande passé le {{Carbon\Carbon::parse
-                                ($order->payment_created_at)->format('d/m/Y à H:i')}} 
+                                ($order->payment_created_at)->format('d/m/Y à H:i')}}
                                 d'un montant de <strong>{{getPrice($order->amount)}}</strong>
+                                <a href="{{route('devis.pdf', $order)}}">Télécharger mon devis !</a>
                             </div>
                             <div class="card-body">
                                 <h6>Liste des produits</h6>
                                 @foreach (unserialize($order->services) as $service)
                                     <div>Nom du service: {{ $service[0] }}</div>
                                     <div>Prix: {{ getPrice($service[1]) }}</div>
-                                    <div>Place : {{ $service[2] }}</div>
+                                    <div>Temps de location en jours : {{ $service[2] }}</div>
                                 @endforeach
                             </div>
                         </div>
