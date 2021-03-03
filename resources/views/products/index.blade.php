@@ -41,7 +41,9 @@
                 <div class="form-group mb-0 mr-1">
                     <input type="text" name="q" class="form-control" value="{{ request()->q ?? '' }}">
                 </div>
-                <button type="submit" class="btn btn-primary transition duration-500 ease"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+                <button type="submit" class="btn bgcolorblue transition duration-500 ease"><i class="fa fa-search text-white" aria-hidden="true"></i></button>
+
             </form>
         </div>
         <div class="nav-scroller mb-2 pt-8">
@@ -78,7 +80,8 @@
 
 </main>
 
-<div class="d-flex justify-content-center mb-32">
+
+<div class="d-flex justify-content-center colorblue mb-32">
     {{ $products->links('pagination::bootstrap-4') }}
 </div>
 @endsection

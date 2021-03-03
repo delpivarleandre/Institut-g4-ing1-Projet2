@@ -6,6 +6,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
 /* PERSO */
 
 .productstitle{
@@ -17,6 +18,15 @@
 .bgcolorblue{
     background-color: #22577A !important;
 }
+
+.colorblue{
+    color: #22577A !important;
+}
+.page-item.active .page-link{
+    background-color: #22577A !important;
+    border-color: #22577A !important;
+}
+
 .ml-15{
     margin-left: 15px;
 }
@@ -52,6 +62,9 @@
 }
 .headerpanier{
     background-image: url("/img/eolienne.jpg");
+
+    background-repeat: no-repeat;
+
     height: 600px;
 }
 .titrepanier{
@@ -65,6 +78,7 @@
     height: 100px;
 }
 /* MAIN */
+
 
 :root {
   --blue: #3490dc;
