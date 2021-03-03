@@ -106,3 +106,7 @@ Route::get('/mescommandes', function () {
 Route::get('/paneladmin', function () {
     return view('admin.dashboard.index');
 })->name('admin.dashboard.index');
+
+Route::fallback(function() {
+    return view('404'); // la vue
+ });
