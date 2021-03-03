@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
 
-    <title>Invoice</title>
+    <title>Devis</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -42,10 +42,8 @@
         <div class="col-xs-6">
             <h4>A:</h4>
             <address>
-                <strong>Baptiste Loubet</strong><br>
-                <span>baptiste.loubet@outlook.com</span> <br>
-                <span>0659596433</span><br>
-                <span>103 Route de Genas, Villeurbanne 69100</span>
+                <strong>{{$name}}</strong><br>
+                <span>{{$mail}}</span> <br>
             </address>
         </div>
 
@@ -79,24 +77,35 @@
     <table class="table">
         <thead style="background: #F5F5F5;">
         <tr>
-            <th>Liste des services</th>
-            <th></th>
-            <th class="text-right">Price</th>
+            <th class="text-left">Options</th>
+            <th class="text-center">Calcul</th>
+            <th class="text-center">TVA</th>
+            <th class="text-right">Prix</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><div><strong>Service</strong></div>
-                <p>Description here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt maiores placeat similique nisi. Nisi ratione, molestias exercitationem illo reiciendis cumque?</p></td>
-            <td></td>
-            <td class="text-right">$600</td>
+            <td class="text-left"><div><strong>Temps de location </strong></div>
+                <p>Vous louez ce service pour une durée de {{$jours}} jours.</p></td>
+            <td class="text-center">{{$jours}} x 10 €</td>
+            <td class="text-center">20%</td>
+            <td class="text-right">{{$calcul_jours}} €</td>
         </tr>
         <tr>
-            <td><div><strong>Service</strong></div>
-                <p>Description here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt maiores placeat similique nisi. Nisi ratione, molestias exercitationem illo reiciendis cumque?</p></td>
-            <td></td>
-            <td class="text-right">$600</td>
+            <td><div><strong>Taille</strong></div>
+                <p>Vous avez chosit la taille.</p></td>
+            <td class="text-center"></td>
+            <td class="text-center">20%</td>
+            <td class="text-right">30,00 €</td>
         </tr>
+        <tr>
+            <td><div><strong>Emplacement</strong></div>
+                <p>Vous avez chosit l'emplacement.</p></td>
+            <td class="text-center"></td>
+            <td class="text-center">20%</td>
+            <td class="text-right">30,00 €</td>
+        </tr>
+        
         </tbody>
     </table>
 
@@ -106,8 +115,13 @@
             <table style="width: 100%">
                 <tbody>
                 <tr class="well" style="padding: 5px">
-                    <th style="padding: 5px"><div> Balance Due (CAD) </div></th>
-                    <td style="padding: 5px" class="text-right"><strong> $600 </strong></td>
+                    <th style="padding: 5px"><div> Total sans TVA</div></th>
+                    <td style="padding: 5px" class="text-right"><strong>{{$price_service}} </strong></td>
+                </tr>
+                
+                <tr class="well" style="padding: 5px; margin-top:10px;">
+                    <th style="padding: 5px"><div> Total </div></th>
+                    <td style="padding: 5px" class="text-right"><strong>{{$amount}} </strong></td>
                 </tr>
                 </tbody>
             </table>

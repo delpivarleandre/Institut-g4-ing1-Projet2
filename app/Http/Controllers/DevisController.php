@@ -2,30 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use App\Models\Order_Service;
-use Illuminate\Http\Request;
 use DB;
 use PDF;
+use App\Models\Order;
+use Illuminate\Http\Request;
+use App\Models\Order_Service;
+use Illuminate\Support\Facades\Auth;
+
 class DevisController extends Controller
 {
     public function generate_PDF($id)
     {
         $order = DB::table('order__services')->where('id', '=', $id)->get();
-
+        $service = unserialize($order->all()[0]->services);
         $data = [
 
-            'amount' => $order->all()[0]->amount,
+            'amount' => getPrice($order->all()[0]->amount),
             'id' => $order->all()[0]->id,
-
-            'date' => date('m/d/Y')
-
+            'date' => $order->all()[0]->created_at,
+            'titre' => $service["service_0"][0],
+            'price_service'=> getPrice($service["service_0"][1]),
+            'jours' => $service["service_0"][2],
+            'mail' => Auth::user()->email,
+            'name' => Auth::user()->name,
+            'calcul_jours' =>  $service["service_0"][2] *10,00,
         ];
-    dd($order->all()[0]->services);
-
+        
         $pdf = PDF::loadView('devis.pdf', $data );
-
-
-        return $pdf->download('itsolutionstuff.pdf');
+        return $pdf->download('devis.pdf');
     }
 }
