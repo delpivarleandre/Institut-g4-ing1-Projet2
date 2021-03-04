@@ -28,7 +28,7 @@
         <div class="mt-16 border-t-2 border-gray-300 flex flex-col items-center">
             <div class="sm:w-2/3 text-center py-6">
                 <p class="text-sm text-white font-bold mb-2">
-                    &copy; Éco Services <?php echo date("Y"); ?>
+                    &copy; Éco Services 2020 - <?php echo date("Y"); ?>
                 </p>
             </div>
         </div>
