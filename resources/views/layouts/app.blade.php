@@ -131,5 +131,6 @@
     </div>
     @yield('extra-js')
 </body>
+@extends('layouts.footer')
 
 </html>
