@@ -101,6 +101,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:is_a
 Route::resource('contact', 'ContactController');
 /*Authentification Routes */
 Auth::routes();
+/*Administration Users Routes */
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('users', 'UsersController');
+});
 //Affichage de la vue acceuil
 Route::get('/', function () {
     return view('acceuil.index');
@@ -110,7 +114,6 @@ Route::get('/presentation', function () {
     return view('presentation.index');
 })->name('presentation.index');
 //Affichage de la vue 404
-
  Route::fallback(function(){
     return view('errors.404'); 
  });
