@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Mes commandes
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

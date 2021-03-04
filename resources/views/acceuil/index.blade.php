@@ -1,7 +1,9 @@
 @extends('layouts.app')
+@section('title')
+    Acceuil
+@endsection
 
 @section('content')
-
 
 <!DOCTYPE html>
 <html lang="fr">

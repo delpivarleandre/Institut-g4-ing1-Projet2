@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Nos Produits
+@endsection
 @section('content')
 
 <main class="my-8">

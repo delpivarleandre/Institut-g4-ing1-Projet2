@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title')
+    Contactez-nous
+@endsection
 @section('content')
 
 
