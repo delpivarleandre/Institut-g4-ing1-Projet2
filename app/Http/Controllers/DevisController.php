@@ -31,4 +31,10 @@ class DevisController extends Controller
         $pdf = PDF::loadView('devis.pdf', $data );
         return $pdf->download('devis.pdf');
     }
+    public function index()
+    {
+        $orders_service = Order_Service::take(10)->get();
+
+        return view('orders.index_devis')->with('orders_service', $orders_service);
+    }
 }

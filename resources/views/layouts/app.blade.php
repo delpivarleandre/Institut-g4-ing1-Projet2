@@ -92,6 +92,9 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @can('is_commercial')
+                                <a class="dropdown-item" href="{{ route('orders.index_devis') }}">Les devis</a>
+                                @endcan
                                 @can('is_pro')
                                 <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
                                 @endcan
