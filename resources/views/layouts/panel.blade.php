@@ -92,7 +92,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                @can('manage-users')
+                                @can('is_admin')
                                     <a href="{{route('admin.dashboard.index')}}" class="dropdown-item">Panel d'administration</a>
                                 @endcan
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
