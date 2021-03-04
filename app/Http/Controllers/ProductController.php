@@ -20,9 +20,9 @@ class ProductController extends Controller
         if(request()->categorie){
             $products = Product::with('categories')->whereHas('categories', function($query){
                 $query->where('name', request()->categorie);
-            })->paginate(4);
+            })->paginate(12);
         }else{
-            $products = Product::with('categories')->paginate(4);
+            $products = Product::with('categories')->paginate(12);
         }
         return view('products.index')->with('products', $products);
     }
@@ -41,7 +41,7 @@ class ProductController extends Controller
         $q = request()->input('q');
 
         $products = Product::where('title', 'like', "%$q%")
-                ->paginate(6);
+                ->paginate(12);
 
         return view('products.search')->with('products', $products);
     }
