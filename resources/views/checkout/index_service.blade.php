@@ -114,11 +114,14 @@
         var form = document.getElementById('payment-form');
         form.addEventListener('submit', function(event) {
             event.preventDefault();
-            stripe.handleCardPayment(clientSecret, cardElement,options, {
-                payment_method_data: {
-                        billing_details: { name: nom.value, phone : phone.value , email: email.value, address:{ line1 : adresse.value, city : city.value}}
-                     }
-                }).then(function(result) {                    
+            stripe.handleCardPayment(clientSecret, cardElement, {
+                    payment_method_data: {
+                        billing_details: { name: nom.value, phone : phone.value , email: email.value, address:{ line1 : adresse.value, city : city.value
+                            }}
+                    }
+                })
+                .then(function(result) {
+                    // console.log(result);
                     if (result.error) {
                         // Inform the user if there was an error.
                         var errorElement = document.getElementById('card-errors');
@@ -134,16 +137,13 @@
                             },
                             method: 'POST',
                             body: JSON.stringify({
-                                paymentIntent: result,
-                                billing_details : billing_details
+                                paymentIntent: result
                             })
-
                         }).then((data) => {
                             if (!data.ok) {
                                 console.log('Mauvaise réponse du réseau');
                             }
-
-                       //document.location.href = "/merci";
+                       document.location.href = "/merci";
                         }).catch((error) => {
                             console.error(error)
                         })
