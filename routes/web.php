@@ -52,7 +52,6 @@ Route::middleware('can:is_pro')->group(function () {
     /* Services Routes */
     Route::get('/service', 'ServiceController@index')->name('services.index');
     Route::get('/service/{service}', 'ServiceController@show')->name('services.show');
-    Route::get('generate-pdf/{order}', 'DevisController@generate_PDF')->name('devis.pdf');
     /* Cart Routes */
     Route::get('/panier/service', 'PanierController@index_service')->name('cart.service');
     Route::post("/panier/service/ajouter", 'PanierController@store_service')->name('cart.store_service');
@@ -101,16 +100,25 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:is_a
 Route::resource('contact', 'ContactController');
 /*Authentification Routes */
 Auth::routes();
+/*Administration Users Routes */
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('users', 'UsersController');
+});
+//Telechargement du devis
+Route::get('generate-pdf/{order}', 'DevisController@generate_PDF')->name('devis.pdf');
 //Affichage de la vue acceuil
 Route::get('/', function () {
     return view('acceuil.index');
 })->name('acceuil.index');
+//Affichage de la vue projet
+Route::get('/projet', function () {
+    return view('projet.index');
+})->name('projet.index');
 //Affichage de la vue présentation
 Route::get('/presentation', function () {
     return view('presentation.index');
 })->name('presentation.index');
 //Affichage de la vue 404
-
  Route::fallback(function(){
     return view('errors.404'); 
  });

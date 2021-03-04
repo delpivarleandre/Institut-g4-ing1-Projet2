@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Merci
+@endsection
 @section('content')
 
     <div class="col-md-12">

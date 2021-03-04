@@ -1,5 +1,7 @@
 @extends('layouts.panel')
-
+@section('title')
+    Gestion
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -26,14 +28,14 @@
                         <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
                         <td>
                             @can('is_admin')
-                            <a href="{{route('admin.users.edit', $user->id)}}"><button class=" btn btn-primary">Éditer</button></a>
+                              <a href="{{route('admin.users.edit', $user->id)}}"><button class=" btn btn-primary">Éditer</button></a>
                             @endcan
                             @can('is_admin')
-                            <form action="{{route('admin.users.destroy', $user->id)}}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-warning">Supprimer</button>
-                            </form>
+                              <form action="{{route('admin.users.destroy', $user->id)}}" method="POST" class="d-inline">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-warning">Supprimer</button>
+                              </form>
                             @endcan
                         </td>
                         </tr>

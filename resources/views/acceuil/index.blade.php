@@ -1,14 +1,9 @@
 @extends('layouts.app')
+@section('title')
+    Acceuil
+@endsection
 
 @section('content')
-
-
-
-
-
-
-
-
 
 <div class="container2">
   <div class="section" id="hero">
@@ -29,18 +24,7 @@
       <video id="hero-video" src="{{asset('/img/accueil/accueil-video.mp4')}}" autoplay muted loop></video>
     </div>
   </div>
-
-
-
 </div>
-
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
