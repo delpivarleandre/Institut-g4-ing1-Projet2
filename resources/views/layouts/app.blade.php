@@ -92,11 +92,11 @@
                                 <a class="dropdown-item" href="{{ route('orders.index_devis') }}">Les devis</a>
                                 @endcan
                                 
-                                @can('is_pro')
+                                @can('is_pros')
                                 <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
                                 @endcan
                                 
-                                @can('is_particulier')
+                                @can('is_particuliers')
                                 <a class="dropdown-item" href="{{ route('orders.index_product') }}">Mes commandes</a>
                                 @endcan
 

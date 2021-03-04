@@ -34,7 +34,7 @@ class AuthServiceProvider extends ServiceProvider
       
         Gate::define('is_commercial', function (User $user) {
             return $user->hasAnyRole(['commercial']);
-
+        });
         Gate::define('is_admin_commercial', function (User $user) {
             return $user->hasAnyRole(['admin','commercial']);
         });
