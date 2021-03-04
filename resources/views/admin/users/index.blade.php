@@ -1,5 +1,7 @@
 @extends('layouts.panel')
-
+@section('title')
+    Gestion
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -34,6 +36,7 @@
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-warning">Supprimer</button>
                               </form>
+                            @endcan
                         </td>
                         </tr>
                     @endforeach

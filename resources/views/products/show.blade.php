@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Nos Produits
+@endsection
 @section('content')
 <div class="container mx-auto px-6 pt-24">
     <div class="row mb-2">

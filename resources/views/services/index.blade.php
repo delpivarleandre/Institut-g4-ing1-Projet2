@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Nos Services
+@endsection
 @section('content')
 
 <div class="circleServicesDroite">

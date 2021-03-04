@@ -1,5 +1,7 @@
 @extends('layouts.panel')
-
+@section('title')
+    Modifier
+@endsection
 @section('content')
 
 <div class="container">
@@ -15,7 +17,13 @@
             <div class="invalid-feedback">{{$errors->first('title')}}</div>
             @enderror
         </div>
-
+        <div class="form-group">
+            <label for="description">Description : </label>
+            <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="description" value ="{{$service->description}}"></input>
+            @error('description')
+            <div class="invalid-feedback">{{$errors->first('description')}}</div>
+            @enderror
+        </div>
         <div class="form-group">
             <label for="image">Url de l'image : </label>
             <input type="text" class="form-control @error('image') is-invalid @enderror" name="image" id="image" value ="{{$service->image}}"></input>

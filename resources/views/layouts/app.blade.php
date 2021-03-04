@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('extra-meta')
 
-    <title>Éco Services - </title>
+    <title>Éco Services - @yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -54,6 +54,9 @@
                         <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
                     @endcan
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('projet.index') }}">Le projet</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
                     </li>

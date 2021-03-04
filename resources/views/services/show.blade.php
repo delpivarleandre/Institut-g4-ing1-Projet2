@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Nos Services
+@endsection
 @section('content')
 <div class="container mx-auto px-6">
     <h1 class="text-center mb-4 mr-5 font-weight-bold text-4xl"> Le service {{$service->title}} </h1>

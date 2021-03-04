@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title')
-    Présentation
+    Le Projet
 @endsection
 @section('content')
 <div class="container">
     <section>
         <div class="row col-lg-12 pt-16 justify-content-center">
             <div class="col-lg-6 mb-4 font-weight-bold text-4xl">
-                <h1 class="text-center productstitle">DÉCOUVREZ ÉCO-SERVICES </h1>
+                <h1 class="text-center productstitle">NOTRE PROJET </h1>
             </div>
         </div>
     </section>
