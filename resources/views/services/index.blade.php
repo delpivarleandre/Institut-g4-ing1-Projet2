@@ -22,8 +22,13 @@
 
         <div class="text-center">
             <div class="col-sm-12">
-                <p>Solution compl&egrave;te: triez tous les d&eacute;chets de bureau - papiers, cartons, emballages, etc. - de la source au recyclage en France. Cela inclut le support de vos collaborateurs, les outils de communication 24h / 24.</p>
-                <p>Vos achats, vos choix de consommation sont des prises de position en faveur des valeurs et des causes pour lesquelles votre entreprise est engag&eacute;e. En choisissant des produits et services &eacute;co-responsables, vous limitez l&rsquo;impact environnemental de votre bureau et soutenez l&rsquo;industrie fran&ccedil;aise.</p>
+                <h2 class="text-left col-lg-6 offset-lg-3">Solution complète: </h2>
+                <p class="mt-8 col-lg-6 offset-lg-3 paveservices text-justify">• Triez tous les déchets de bureau - papiers, cartons, emballages, etc. - de la source au
+                    recyclage en France. Cela inclut le support de vos collaborateurs, les outils de communication 24h / 24.<br/>
+                    • Vos achats, vos choix de consommation sont des prises de position en faveur des valeurs et des causes
+                    pour lesquelles votre entreprise est engagée.<br/>
+                    • En choisissant des produits et services éco-responsables,
+                    vous limitez l'impact environnemental de votre bureau et soutenez l'industrie française.</p>
             </div>
         </div>
 
@@ -33,7 +38,7 @@
         <div class="container mx-auto px-6">
             <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
                 @foreach ($services as $service)
-                <div class="bg-white w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                <div class="bg-white w-full shadowbox max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
                         <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('{{$service->image}}')"></div>
                     <div class="px-5 py-3 text-center">
                         <a  href="{{route('services.show', $service)}}">{{$service->title}}</a>
