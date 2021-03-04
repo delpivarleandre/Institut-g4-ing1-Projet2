@@ -49,7 +49,7 @@
                         <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
                     @endcan
-                    @can('edit-users')
+                    @can('is_admin')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('products.index') }}">Produits</a>
                     </li>
@@ -57,8 +57,6 @@
                         <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
                     @endcan
-
-
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
                     </li>

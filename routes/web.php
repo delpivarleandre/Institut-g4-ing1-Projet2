@@ -60,34 +60,35 @@ Route::middleware('can:is_pro')->group(function () {
     Route::get('/merci', 'CheckoutController@thankyou_service')->name('checkout.thankyou_service');
 });
 
-/* Admin Gestion Categorie Routes */
-Route::get('/gestioncategorie', 'Admin\AjoutCategorieController@index')->name('admin.category.index');
-Route::get('/gestioncategorie/ajouter', 'Admin\AjoutCategorieController@create')->name('admin.category.ajouter');
-Route::resource('/admin/category', 'Admin\AjoutCategorieController');
+Route::middleware('can:is_commercial')->group(function () {
+    Route::get('/lesdevis', 'DevisController@index')->name('orders.index_devis');
+});
 
-/* Admin Gestion Product Routes */
-Route::get('/gestionsarticle', 'Admin\AjoutProductController@index')->name('admin.produits.index');
-Route::get('/gestionsarticle/ajouter', 'Admin\AjoutProductController@create')->name('admin.produits.ajouter');
-Route::resource('/admin/product', 'Admin\AjoutProductController');
+Route::middleware('can:is_admin')->group(function () {
+    /* Admin Gestion Categorie Routes */
+    Route::get('/gestioncategorie', 'Admin\AjoutCategorieController@index')->name('admin.category.index');
+    Route::get('/gestioncategorie/ajouter', 'Admin\AjoutCategorieController@create')->name('admin.category.ajouter');
+    Route::resource('/admin/category', 'Admin\AjoutCategorieController');
+    /* Admin Gestion Product Routes */
+    Route::get('/gestionsarticle', 'Admin\AjoutProductController@index')->name('admin.produits.index');
+    Route::get('/gestionsarticle/ajouter', 'Admin\AjoutProductController@create')->name('admin.produits.ajouter');
+    Route::resource('/admin/product', 'Admin\AjoutProductController');
+    /* Admin Gestion Service Routes */
+    Route::get('/gestionsservice', 'Admin\AjoutServiceController@index')->name('admin.services.index');
+    Route::get('/gestionsservice/ajouter', 'Admin\AjoutServiceController@create')->name('admin.services.ajouter');
+    Route::resource('/admin/service', 'Admin\AjoutServiceController');
+});
 
-/* Admin Gestion Product Routes */
-Route::get('/gestionsservice', 'Admin\AjoutServiceController@index')->name('admin.services.index');
-Route::get('/gestionsservice/ajouter', 'Admin\AjoutServiceController@create')->name('admin.services.ajouter');
-Route::resource('/admin/service', 'Admin\AjoutServiceController');
+/*Administration Users Routes */
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:is_admin')->group(function () {
+    Route::resource('users', 'UsersController');
+});
 
 /* Contact Routes */
 Route::resource('contact', 'ContactController');
 
-Route::get('/lesdevis', 'DevisController@index')->name('orders.index_devis');
-
-
 /*Authentification Routes */
 Auth::routes();
-
-/*Administration Users Routes */
-Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function () {
-    Route::resource('users', 'UsersController');
-});
 
 //Affichage de la vue acceuil
 Route::get('/', function () {

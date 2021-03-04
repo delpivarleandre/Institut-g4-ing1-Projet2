@@ -34,17 +34,17 @@ class AuthServiceProvider extends ServiceProvider
       
         Gate::define('is_commercial', function (User $user) {
             return $user->hasAnyRole(['commercial']);
-
+        });
         Gate::define('is_admin_commercial', function (User $user) {
             return $user->hasAnyRole(['admin','commercial']);
         });
 
         Gate::define('is_particulier', function (User $user) {
-            return $user->hasAnyRole(['particulier', 'admin']);
+            return $user->hasAnyRole(['particulier', 'admin', 'commercial']);
         });
 
         Gate::define('is_pro', function (User $user) {
-            return $user->hasAnyRole(['pro', 'admin']);
+            return $user->hasAnyRole(['pro', 'admin', 'commercial']);
         });
 
         Gate::define('is_particuliers', function (User $user) {
@@ -54,5 +54,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('is_pros', function (User $user) {
             return $user->hasAnyRole(['pro']);
         });
+    
     }
 }
