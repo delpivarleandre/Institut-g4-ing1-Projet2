@@ -36,6 +36,7 @@
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-warning">Supprimer</button>
                               </form>
+                            @endcan
                         </td>
                         </tr>
                     @endforeach

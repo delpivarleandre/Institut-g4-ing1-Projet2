@@ -20,6 +20,13 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="description">Description : </label>
+                            <input type="text" class=" form-control @error('description') is-invalid @enderror" name="description" id="description"></input>
+                            @error('description')
+                            <div class="invalid-feedback">{{$errors->first('description')}}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="image">Lien de l'image : </label>
                             <input type="text" class="form-control @error('image') is-invalid @enderror" name="image" id="image"></input>
                             @error('image')
@@ -27,8 +34,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="price">Prix : </label>
-                            <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price"></input>
+                            <input type="hidden" class="form-control @error('price') is-invalid @enderror" name="price" id="price" value="2000"></input>
                             @error('price')
                             <div class="invalid-feedback">{{$errors->first('price')}}</div>
                             @enderror
