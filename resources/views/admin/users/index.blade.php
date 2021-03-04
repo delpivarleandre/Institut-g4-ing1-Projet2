@@ -25,10 +25,10 @@
                         <td>{{$user->email}}</td>
                         <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
                         <td>
-                            @can('edit-users')
+                            @can('is_admin')
                             <a href="{{route('admin.users.edit', $user->id)}}"><button class=" btn btn-primary">Éditer</button></a>
                             @endcan
-                            @can('delete-users')
+                            @can('is_admin')
                             <form action="{{route('admin.users.destroy', $user->id)}}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')

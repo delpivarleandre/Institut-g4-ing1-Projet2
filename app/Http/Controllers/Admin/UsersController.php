@@ -65,7 +65,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        if(Gate::denies('edit-users')){
+        if(Gate::denies('is_admin')){
             return redirect()->route('admin.users.index');
         }
         
@@ -100,7 +100,7 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        if(Gate::denies('delete-users')){
+        if(Gate::denies('is_admin')){
             return redirect()->route('admin.users.index');
         }
         $user->roles()->detach();

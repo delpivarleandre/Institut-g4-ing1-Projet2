@@ -18,9 +18,6 @@ class CreateServicesTable extends Migration
             $table->string('title')->unique();
             $table->string('image');
             $table->integer('price');
-            $table->string('location');
-            $table->string('size');
-            $table->string('place');
             $table->timestamps();
         });
     }

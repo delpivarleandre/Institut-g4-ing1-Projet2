@@ -19,12 +19,6 @@
                                     <th scope="col" class="border-0 bg-light">
                                         <div class="py-2 text-uppercase">Temps de location (en jours)</div>
                                     </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Taille</div>
-                                    </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Emplacement</div>
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,20 +40,6 @@
                                                 @endfor
                                         </select>
                                     </td>
-                                    <td class="border-0 align-middle">
-                                        <select name="size" id="size" class="custom-select">
-                                            <option value="petit" selected >Petit</option>
-                                            <option value="moyen" >Moyen</option>
-                                            <option value="grand" >Grand</option>
-                                        </select>
-                                    </td>
-                                    <td class="border-0 align-middle">
-                                        <select name="place" id="place" class="custom-select">
-                                            <option value="domicile" selected >A domicile</option>
-                                            <option value="entreprise" >A l'entreprise</option>
-                                        </select>
-                                    </td>
-                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -108,11 +88,13 @@
             },
             method: 'PATCH',
             body: JSON.stringify({
-                qty: select.value
+                qty: select.value,
+                size: 'test',
+                emplacement: 'test'
             })
         }).then((data) => {
             console.log(data);
-            location.reload();
+            // location.reload();
         }).catch((error) => {
             console.log(error);
         });
