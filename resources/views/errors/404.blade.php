@@ -42,6 +42,5 @@
 
 </html>
 
-@include('layouts.footer')
 
 @endsection
