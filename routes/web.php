@@ -61,7 +61,6 @@ Route::middleware('can:is_pro')->group(function () {
 });
 
 /* Admin Gestion Categorie Routes */
-
 Route::get('/gestioncategorie', 'Admin\AjoutCategorieController@index')->name('admin.category.index');
 Route::get('/gestioncategorie/ajouter', 'Admin\AjoutCategorieController@create')->name('admin.category.ajouter');
 Route::resource('/admin/category', 'Admin\AjoutCategorieController');
@@ -79,7 +78,10 @@ Route::resource('/admin/service', 'Admin\AjoutServiceController');
 /* Contact Routes */
 Route::resource('contact', 'ContactController');
 
-/* Authentification Routes */
+Route::get('/lesdevis', 'DevisController@index')->name('orders.index_devis');
+
+
+/*Authentification Routes */
 Auth::routes();
 
 /*Administration Users Routes */
@@ -97,7 +99,6 @@ Route::get('/presentation', function () {
     return view('presentation.index');
 })->name('presentation.index');
 
-
 //Affichage de la vue Mes commandes
 Route::get('/mescommandess', function () {
     return view('orders.index_product');
@@ -111,3 +112,7 @@ Route::get('/mescommandes', function () {
 Route::get('/paneladmin', function () {
     return view('admin.dashboard.index');
 })->name('admin.dashboard.index');
+
+Route::fallback(function() {
+    return view('404'); // la vue
+ });

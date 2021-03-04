@@ -49,7 +49,7 @@
                         <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
                     @endcan
-                    @can('edit-users')
+                    @can('is_admin_commercial')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
@@ -87,14 +87,20 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                @can('is_pros')
+                            
+                                @can('is_commercial')
+                                <a class="dropdown-item" href="{{ route('orders.index_devis') }}">Les devis</a>
+                                @endcan
+                                
+                                @can('is_pro')
                                 <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
                                 @endcan
-                                @can('is_particuliers')
+                                
+                                @can('is_particulier')
                                 <a class="dropdown-item" href="{{ route('orders.index_product') }}">Mes commandes</a>
                                 @endcan
 
-                                @can('manage-users')
+                                @can('is_admin')
                                 <a href="{{route('admin.dashboard.index')}}" class="dropdown-item">Panel d'administration</a>
                                 @endcan
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

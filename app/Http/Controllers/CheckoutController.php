@@ -12,15 +12,9 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use PDF;
 
 class CheckoutController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index_product()
     {
         if (Cart::count() <= 0) {
@@ -57,31 +51,13 @@ class CheckoutController extends Controller
             'currency' => 'eur',
             'description' => 'Nouveau paiement de client ',
             'payment_method_types' => ['card'],
-            'receipt_email' => Auth::user()->email,
-            'metadata' => [
-                'name'=>Auth::user()->email
-            ]
+            'receipt_email' => Auth::user()->email
         ]);
         $intent = $payment_intent->client_secret;
 
         return view('checkout.index_service', compact('intent'));;
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store_product(Request $request)
     {
         $data = $request->json()->all();
@@ -163,52 +139,5 @@ class CheckoutController extends Controller
     public function thankyou_service()
     {
         return Session::has('success') ? view('checkout.thankyou_service') : redirect()->route('services.index');
-    }
-
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
