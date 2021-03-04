@@ -114,6 +114,11 @@ class PanierController extends Controller
 
     public function update_service(Request $request, $rowId)
     {
+        $data = $request->json()->all();
+
+        Cart::update($rowId, $data['qty']);
+        session()->flash('success_message', 'La quantité a bien été ajouté');
+        return response()->json(['success' => true]);
     }
 
     /**

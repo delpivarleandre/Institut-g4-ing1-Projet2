@@ -68,8 +68,22 @@
     </section>
     <section class="row col-lg-12 justify-content-center">
         <div class="pt-16 mb-48">
-            <a href={{route('products.index')}} class="buttonsbis pl-8 pr-8 nounderline">DÉCOUVREZ NOS PRODUITS</a>
+            @guest
+                <a href={{route('products.index')}} class="buttonsbis pl-8 pr-8 nounderline">DÉCOUVREZ NOS PRODUITS/NOS SERVICES</a>
+            @endguest('guest')
+
+            @can('is_particuliers')
+                <a href={{route('products.index')}} class="buttonsbis pl-8 pr-8 nounderline">DÉCOUVREZ NOS PRODUITS</a>
+            @endcan
+
+            @can('is_pros')
+                <a href={{route('products.index')}} class="buttonsbis pl-8 pr-8 nounderline">DÉCOUVREZ NOS SERVICES</a>
+            @endcan
+
         </div>
+
     </section>
 </div>
+
 @endsection
+

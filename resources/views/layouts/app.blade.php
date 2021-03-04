@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('extra-meta')
 
-    <title>{{ config('app.name', 'Éco Services') }}</title>
+    <title>Éco Services - </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -49,16 +49,11 @@
                         <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
                     @endcan
-                    @can('edit-users')
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('products.index') }}">Produits</a>
-                    </li>
+                    @can('is_admin_commercial')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
                     @endcan
-
-
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
                     </li>
@@ -92,14 +87,20 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                @can('is_pro')
+                            
+                                @can('is_commercial')
+                                <a class="dropdown-item" href="{{ route('orders.index_devis') }}">Les devis</a>
+                                @endcan
+                                
+                                @can('is_pros')
                                 <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
                                 @endcan
-                                @can('is_particulier')
+                                
+                                @can('is_particuliers')
                                 <a class="dropdown-item" href="{{ route('orders.index_product') }}">Mes commandes</a>
                                 @endcan
 
-                                @can('manage-users')
+                                @can('is_admin')
                                 <a href="{{route('admin.dashboard.index')}}" class="dropdown-item">Panel d'administration</a>
                                 @endcan
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -115,8 +116,8 @@
                     </ul>
                 </div>
             </div>
-            @can('is_particulier')
-            <a href="{{route('cart.product')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
+            @can('is_particuliers')
+            <a href="{{route('cart.product')}}"><i style="font-size: 20px" class="fas fa-shopping-cart"></i><span class="badge badge-pill badge-red">{{ Cart::count() }}</span></a>
             @endcan
         </nav>
         @if (session('success'))
@@ -130,5 +131,6 @@
     </div>
     @yield('extra-js')
 </body>
+@extends('layouts.footer')
 
 </html>

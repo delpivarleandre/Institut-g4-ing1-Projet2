@@ -29,10 +29,10 @@ class UsersTableSeeder extends Seeder
 
         ]);
 
-        $vendeur = User::create([
+        $commercial = User::create([
 
-            'name'=> 'vendeur',
-            'email'=> 'vendeur@vendeur.com',
+            'name'=> 'commercial',
+            'email'=> 'commercial@commercial.com',
             'password'=>Hash::make('password')
 
         ]);
@@ -56,13 +56,13 @@ class UsersTableSeeder extends Seeder
 
         
         $adminRole = Role::where('name', 'admin')->first();
-        $vendeurRole = Role::where('name', 'vendeur')->first();
+        $commercialRole = Role::where('name', 'commercial')->first();
         $proRole = Role::where('name', 'pro')->first();
         $particulierRole = Role::where('name', 'particulier')->first();
         
 
         $admin->roles()->attach($adminRole);
-        $vendeur->roles()->attach($vendeurRole);
+        $commercial->roles()->attach($commercialRole);
         $pro->roles()->attach($proRole);
         $particulier->roles()->attach($particulierRole);
        
