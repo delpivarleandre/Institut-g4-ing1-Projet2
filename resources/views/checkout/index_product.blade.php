@@ -29,14 +29,14 @@
                         <div class="form-group">
                             <div class="card-header">
                                 <label for="card-element">
-                                    Enter your credit card information
+                                Saisissez les informations relatives à votre carte de crédit
                                 </label>
                             </div>
                             <div class="card-body">
                                 <div id="card-element">
                                     <!-- A Stripe Element will be inserted here. -->
-                                
-                                    
+
+
                                 </div>
                                 <!-- Used to display form errors. -->
                                 <div id="card-errors" role="alert"></div>

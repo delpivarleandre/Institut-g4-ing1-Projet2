@@ -18,6 +18,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ae6899135a.js" crossorigin="anonymous"></script>
 
 
@@ -90,15 +91,15 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            
+
                                 @can('is_commercial')
                                 <a class="dropdown-item" href="{{ route('orders.index_devis') }}">Les devis</a>
                                 @endcan
-                                
+
                                 @can('is_pros')
                                 <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
                                 @endcan
-                                
+
                                 @can('is_particuliers')
                                 <a class="dropdown-item" href="{{ route('orders.index_product') }}">Mes commandes</a>
                                 @endcan
