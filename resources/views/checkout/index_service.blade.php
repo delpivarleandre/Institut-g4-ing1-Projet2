@@ -139,12 +139,10 @@
                             body: JSON.stringify({
                                 paymentIntent: result
                             })
-
                         }).then((data) => {
                             if (!data.ok) {
                                 console.log('Mauvaise réponse du réseau');
                             }
-
                        document.location.href = "/merci";
                         }).catch((error) => {
                             console.error(error)

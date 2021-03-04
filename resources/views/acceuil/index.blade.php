@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-
-
 @section('content')
 
 
@@ -106,6 +104,5 @@
 
 </html>
 
-@include('layouts.footer')
 
 @endsection
