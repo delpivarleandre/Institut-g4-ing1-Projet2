@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('extra-meta')
 
-    <title>{{ config('app.name', 'Éco Services') }}</title>
+    <title>Éco Services - </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -117,7 +117,7 @@
                 </div>
             </div>
             @can('is_particuliers')
-            <a href="{{route('cart.product')}}"> Panier<span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
+            <a href="{{route('cart.product')}}"><i style="font-size: 20px" class="fas fa-shopping-cart"></i><span class="badge badge-pill badge-red">{{ Cart::count() }}</span></a>
             @endcan
         </nav>
         @if (session('success'))

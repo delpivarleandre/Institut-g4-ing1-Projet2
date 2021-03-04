@@ -110,6 +110,9 @@ Route::get('/presentation', function () {
     return view('presentation.index');
 })->name('presentation.index');
 //Affichage de la vue 404
-Route::fallback(function() {
-    return view('404'); 
+
+ Route::fallback(function(){
+    return view('errors.404'); 
  });
+
+ 
