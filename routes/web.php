@@ -23,6 +23,42 @@ use App\Http\Controllers\Admin\AjoutCategorieController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/* Middleware particulier */
+
+Route::middleware('can:is_particulier')->group(function () {
+    /* Product Routes */
+    Route::get('/produit', 'ProductController@index')->name('products.index');
+    Route::get('/produit/{product}', 'ProductController@show')->name('products.show');
+    Route::get('/search', 'ProductController@search')->name('products.search');
+    /* Cart Routes */
+    Route::get('/panier/produit', 'PanierController@index_product')->name('cart.product');
+    Route::post("/panier/produit/ajouter", 'PanierController@store_product')->name('cart.store_product');
+    Route::delete('/panier/produit/{rowId}', 'PanierController@destroy_product')->name('cart.destroy_product');
+    Route::patch("/panier/produit/{rowId}", 'PanierController@update_product')->name('cart.update_product');
+    /*Comment Product Routes*/
+    Route::post('comments/{product}', 'CommentController@store')->name('comments.store');
+    /* Checkout Routes */
+    Route::get('/paiements', 'CheckoutController@index_product')->name('checkout.index_product');
+    Route::post('/paiements', 'CheckoutController@store_product')->name('checkout.store_product');
+    Route::get('/mercis', 'CheckoutController@thankyou_product')->name('checkout.thankyou_product');
+});
+
+/* Middleware pro */
+Route::middleware('can:is_pro')->group(function () {
+    /* Services Routes */
+    Route::get('/service', 'ServiceController@index')->name('services.index');
+    Route::get('/service/{service}', 'ServiceController@show')->name('services.show');
+    Route::get('generate-pdf/{order}', 'DevisController@generate_PDF')->name('devis.pdf');
+    /* Cart Routes */
+    Route::get('/panier/service', 'PanierController@index_service')->name('cart.service');
+    Route::post("/panier/service/ajouter", 'PanierController@store_service')->name('cart.store_service');
+    Route::delete('/panier/service/{rowIds}', 'PanierController@destroy_service')->name('cart.destroy_service');
+    Route::patch("/panier/service/{rowId}", 'PanierController@update_service')->name('cart.update_service');
+    /* Checkout Routes */
+    Route::get('/paiement', 'CheckoutController@index_service')->name('checkout.index_service');
+    Route::post('/paiement', 'CheckoutController@store_service')->name('checkout.store_service');
+    Route::get('/merci', 'CheckoutController@thankyou_service')->name('checkout.thankyou_service');
+});
 
 /* Admin Gestion Categorie Routes */
 Route::get('/gestioncategorie', 'Admin\AjoutCategorieController@index')->name('admin.category.index');
@@ -42,40 +78,10 @@ Route::resource('/admin/service', 'Admin\AjoutServiceController');
 /* Contact Routes */
 Route::resource('contact', 'ContactController');
 
-/* Product Routes */
-Route::get('/produit', 'ProductController@index')->name('products.index');
-Route::get('/produit/{product}', 'ProductController@show')->name('products.show');
-Route::get('/search', 'ProductController@search')->name('products.search');
-
-
-/* Services Routes */
-Route::get('/service', 'ServiceController@index')->name('services.index');
-Route::get('/service/{service}', 'ServiceController@show')->name('services.show');
-Route::get('generate-pdf/{order}', 'DevisController@generate_PDF')->name('devis.pdf');
 Route::get('/lesdevis', 'DevisController@index')->name('orders.index_devis');
 
-/*Comment Product Routes*/
-Route::post('comments/{product}', 'CommentController@store')->name('comments.store');
 
-/* Cart Routes */
-Route::get('/panier/produit', 'PanierController@index_product')->name('cart.product');
-Route::get('/panier/service', 'PanierController@index_service')->name('cart.service');
-Route::post("/panier/produit/ajouter", 'PanierController@store_product')->name('cart.store_product');
-Route::post("/panier/service/ajouter", 'PanierController@store_service')->name('cart.store_service');
-Route::delete('/panier/produit/{rowId}', 'PanierController@destroy_product')->name('cart.destroy_product');
-Route::delete('/panier/service/{rowIds}', 'PanierController@destroy_service')->name('cart.destroy_service');
-Route::patch("/panier/produit/{rowId}", 'PanierController@update_product')->name('cart.update_product');
-Route::patch("/panier/service/{rowId}", 'PanierController@update_service')->name('cart.update_service');
-
-/* Checkout Routes */
-Route::get('/paiements', 'CheckoutController@index_product')->name('checkout.index_product');
-Route::get('/paiement', 'CheckoutController@index_service')->name('checkout.index_service');
-Route::post('/paiement', 'CheckoutController@store_service')->name('checkout.store_service');
-Route::post('/paiements', 'CheckoutController@store_product')->name('checkout.store_product');
-Route::get('/merci', 'CheckoutController@thankyou_service')->name('checkout.thankyou_service');
-Route::get('/mercis', 'CheckoutController@thankyou_product')->name('checkout.thankyou_product');
-
-/* Authentification Routes */
+/*Authentification Routes */
 Auth::routes();
 
 /*Administration Users Routes */
@@ -92,7 +98,6 @@ Route::get('/', function () {
 Route::get('/presentation', function () {
     return view('presentation.index');
 })->name('presentation.index');
-
 
 //Affichage de la vue Mes commandes
 Route::get('/mescommandess', function () {

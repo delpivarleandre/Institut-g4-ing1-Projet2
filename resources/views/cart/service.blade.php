@@ -40,7 +40,6 @@
                                                 @endfor
                                         </select>
                                     </td>
-                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -89,11 +88,13 @@
             },
             method: 'PATCH',
             body: JSON.stringify({
-                qty: select.value
+                qty: select.value,
+                size: 'test',
+                emplacement: 'test'
             })
         }).then((data) => {
             console.log(data);
-            location.reload();
+            // location.reload();
         }).catch((error) => {
             console.log(error);
         });

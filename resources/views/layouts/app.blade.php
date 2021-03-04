@@ -51,14 +51,9 @@
                     @endcan
                     @can('is_admin_commercial')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('products.index') }}">Produits</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('services.index') }}">Services</a>
                     </li>
                     @endcan
-
-
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
                     </li>
@@ -92,12 +87,15 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            
                                 @can('is_commercial')
                                 <a class="dropdown-item" href="{{ route('orders.index_devis') }}">Les devis</a>
                                 @endcan
+                                
                                 @can('is_pro')
                                 <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
                                 @endcan
+                                
                                 @can('is_particulier')
                                 <a class="dropdown-item" href="{{ route('orders.index_product') }}">Mes commandes</a>
                                 @endcan
