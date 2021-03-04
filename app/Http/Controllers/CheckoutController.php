@@ -58,9 +58,6 @@ class CheckoutController extends Controller
             'description' => 'Nouveau paiement de client ',
             'payment_method_types' => ['card'],
             'receipt_email' => Auth::user()->email,
-            'metadata' => [
-                'name'=>Auth::user()->email
-            ]
         ]);
         $intent = $payment_intent->client_secret;
 
@@ -121,6 +118,8 @@ class CheckoutController extends Controller
     public function store_service(Request $request)
     {
         $data = $request->json()->all();
+
+
         $order = new Order_Service();
 
         $order->payment_intent_id = $data['paymentIntent']['paymentIntent']['id'];
@@ -137,7 +136,6 @@ class CheckoutController extends Controller
             $services['service_' . $i][] = $service->model->title;
             $services['service_' . $i][] = $service->model->price;
             $services['service_' . $i][] = $service->qty;
-            $services['service_' . $i][] = $service->options;
             $i++;
         }
 
