@@ -28,6 +28,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     @yield('extra-script')
+
+
+    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="135cffa1-6710-4ab2-8fe2-25922927879d";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+
 </head>
 
 <body>

@@ -50,7 +50,7 @@
 
 
 -->
-    <div class="md:container md:mx-auto mb-16">
+    <div class="container md:mx-auto">
 
 
         <h1 id="presentation" class="text-center qsm">Qui sommes-nous ?</h1>
@@ -97,6 +97,8 @@
                     Nos services
                 </button></a>
         </div>
+
+
         @endcan
         @can('is_particuliers')
         <div class="text-center">
@@ -116,9 +118,9 @@
             </div>
             <div class="col-sm-4 text-right"><img src="{{asset('/img/accueil/label-1.png')}}" alt="Certifications 1" title="Certifications 1"></div>
 
-            <div class="col-sm-4 text-center"><img src="{{asset('/img/accueil/label-2.jpg')}}" alt="Certifications 2" title="Certifications 2"></div>
+            <div class="col-sm-4 text-center certif"><img src="{{asset('/img/accueil/label-2.jpg')}}" alt="Certifications 2" title="Certifications 2"></div>
 
-            <div class="col-sm-4 text-left"><img src="{{asset('/img/accueil/label-3.png')}}" alt="Certifications 3" title="Certifications 3"></div>
+            <div class="col-sm-4 text-left certif"><img src="{{asset('/img/accueil/label-3.png')}}" alt="Certifications 3" title="Certifications 3"></div>
 
         </div>
         
