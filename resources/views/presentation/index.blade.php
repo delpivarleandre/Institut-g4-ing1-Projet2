@@ -15,9 +15,9 @@
         <div class="row pt-16 justify-content-center align-items-center">
             <div class="col-lg-5 text-justify">
                 <p class="paveservices">Éco-Services est une société créée en 2021 qui souhaite aller dans le sens de la transition écologique
-                   en vous proposant des produits de tout type avec pour principal atout leur éco-responsabilité. Nous proposont
+                   en vous proposant des produits de tout type avec pour principal atout leur éco-responsabilité.<br/> Nous proposont
                    également des produits réutilisables, recyclés qui permettent de réduire au maximum votre empreinte carbone,
-                   tout en profitant de leur qualité et de leur durabilité.  Un large panel d'articles vous est mit à disposition,
+                   tout en profitant de leur qualité et de leur durabilité.<br/>  Un large panel d'articles vous est mit à disposition,
                    pour les besoins de tout un chacun :) <br />
                 </p>
             </div>
