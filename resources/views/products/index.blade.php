@@ -28,7 +28,8 @@
             </div>
         </div>
     </section>
-    <div class="container mx-auto px-6 pt-8">
+    
+    <div class="container mx-auto px-6 pt-8" id="recherche-retour">
         <div class="row col-lg-12 justify-content-center">
             <div class="col-lg-4 mb-4 font-italic text-lg">
                 <h2 class="text-center productstitle">Recherchez votre produit</h2>
@@ -68,9 +69,12 @@
                         </button>
                     </div>
                 </form>
-                <div class="pl-3 pr-5 py-3 mt-2">
-                    <a class="productstitle transition duration-500 ease uppercase nounderline hovergreen" href="{{route('products.show', $product)}}">{{$product->title}}</a><br/>
+                <div class="px-5 py-3">
+                    <a class="text-gray-700 uppercase " href="{{route('products.show', $product)}}">{{$product->title}}</a>
                     <span class="text-gray-500 mt-2">{{$product->getPrice()}}</span>
+                    @foreach($product->categories as $category)
+                    <span class="text-gray-500 mt-2">{{$category->name}}</span>
+                    @endforeach
                 </div>
             </div>
             @endforeach

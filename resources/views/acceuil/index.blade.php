@@ -70,30 +70,41 @@
             </div>
 
             <div class="col-sm-7 ml-16 qsm-text text-md whitespace-nowrap text-gray-800 font-semibold pl-0 text-justify">
+              <p class="paveservices mb-0">Chaque jour, les &eacute;quipes d&apos;&eacute;co-services mettent toute leur capacit&eacute; d&rsquo;innovation au service de leurs clients dans le passage d&rsquo;un mod&egrave;le lin&eacute;aire qui surconsomme les ressources &agrave; une &eacute;conomie circulaire qui les recycle et les valorise.</p>
+              <p class="paveservices mb-0"><br>Une entreprise fond&eacute;e par <strong>Arnaud PARADIS</strong>, engag&eacute; de passion pour la transition &eacute;cologique et solidaire.</p>
+              <p class="paveservices mb-0" style="text-align: center;"><br>Apr&egrave;s 20 ans d&apos;exp&eacute;rience, &eacute;co-services se r&eacute;invente !</p>
+              <p class="paveservices mb-0"><br>D&eacute;couvrez d&egrave;s maintenant l&apos;ensemble de nos produits pour les professionnels et particuliers.</p>
+              <p class="paveservices mb-0"><br>En plus de son activit&eacute; principale, l&apos;entreprise esp&egrave;re &eacute;galement se diversifier et fournir des produits<br>z&eacute;ro d&eacute;chet aux particuliers ayant des ventes de produits &eacute;cologiquement responsables.</p>
+              <p class="paveservices mb-0"><br></p>
+              <p class="paveservices mb-0">Inscrivez-vous en tant que particulier pour acc&eacute;der &agrave; nos produits ou alors en professionnelle si vous souhaiter voir nos services.</p>
+               
+                <br><br><br>
 
-
-
-                <p class="paveservices mb-0">Chaque jour, les &eacute;quipes d&apos;&eacute;co-services mettent toute leur capacit&eacute; d&rsquo;innovation
-                au service de leurs clients dans le passage d&rsquo;un mod&egrave;le lin&eacute;aire qui surconsomme les ressources &agrave; une
-                &eacute;conomie circulaire qui les recycle et les valorise.<br/>
-                Une entreprise fond&eacute;e par <strong>Arnaud PARADIS</strong>, engag&eacute; de passion pour la transition &eacute;cologique et solidaire.<br/>
-                Apr&egrave;s 20 ans d&apos;exp&eacute;rience, &eacute;co-services se r&eacute;invente !<br/>
-                D&eacute;couvrez d&egrave;s maintenant l&apos;ensemble de nos produits pour les professionnels et particuliers.<br/>
-                En plus de son activit&eacute; principale, l&apos;entreprise esp&egrave;re &eacute;galement se diversifier et fournir des produits<br/>
-                z&eacute;ro d&eacute;chet aux particuliers ayant des ventes de produits &eacute;cologiquement responsables.</p>
-
-
+                @guest
+                <div class="text-center">
+                    <a href="{{route('register')}}"><button class="center bg-green-500 font-semibold text-white p-2 w-64 rounded-full hover:bg-green-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300 m-2" @click="showModal3 = true">
+                            Nos Produits | Nos services
+                        </button></a>
+                </div>  
+                @endguest('guest')    
             </div>
 
         </div>
-        <!--
+   
+        @can('is_pros')
         <div class="text-center">
             <a href="{{route('services.index')}}"><button class="center bg-green-500 font-semibold text-white p-2 w-32 rounded-full hover:bg-green-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300 m-2" @click="showModal3 = true">
                     Nos services
                 </button></a>
         </div>
-    -->
-
+        @endcan
+        @can('is_particuliers')
+        <div class="text-center">
+            <a href="{{route('products.index')}}"><button class="center bg-green-500 font-semibold text-white p-2 w-32 rounded-full hover:bg-green-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300 m-2" @click="showModal3 = true">
+                    Nos Produits
+                </button></a>
+        </div>
+        @endcan
     </div>
  <div class="h2-title mt-16">
             <h2 class="text-center v-heading-v2"></h2>
@@ -110,13 +121,8 @@
             <div class="col-sm-4 text-left"><img src="{{asset('/img/accueil/label-3.png')}}" alt="Certifications 3" title="Certifications 3"></div>
 
         </div>
-        <!--
-        <div class="text-center">
-            <a href="{{route('products.index')}}"><button class="center bg-green-500 font-semibold text-white p-2 w-min rounded-full hover:bg-green-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300 m-2" @click="showModal3 = true">
-                    Découvrez nos produits
-                </button></a>
-        </div>
-    -->
+        
+    
     <div class="section" id="footer">
     <div class="content">
       <h2>Éco service, c'est une équipe de <br/>professionnels toujours à votre service</h2>

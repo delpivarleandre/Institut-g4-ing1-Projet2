@@ -9,16 +9,18 @@
 <div class="px-4 px-lg-0">
     <div class="pb-5">
         <div class="container mt-32">
+            <h1 class="text-center ">Fait ta demande !</h1>
+            <br><br>
             <div class="row">
                 <div class="col-lg-12 p-5 bg-white rounded shadow-lg mb-5">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="border-0 bg-blue roundedgauche">
+                                    <th scope="col" class="border-0 bg-light">
                                         <div class="p-2 px-3 text-uppercase">Service</div>
                                     </th>
-                                    <th scope="col" class="border-0 bg-blue roundeddroit">
+                                    <th scope="col" class="border-0 bg-light">
                                         <div class="py-2 text-uppercase">Temps de location (en jours)</div>
                                     </th>
                                 </tr>
@@ -35,7 +37,7 @@
                                         </div>
                                     </th>
                                     <td class="border-0 align-middle">
-                                        <select name="qty" id="{{$key}}qty" data-id="{{ $service->rowId }}" class="custom-select" onchange="qty('{{ $service->rowId }}','{{$key}}')">
+                                        <select name="qty" id="{{$key}}qty" data-id="{{ $service->rowId }}" class="custom-select w-20 ml-5" onchange="qty('{{ $service->rowId }}','{{$key}}')">
                                             @for ($i = 1; $i <= 10; $i++) <option value="{{ $i }}" {{ $i == $service->qty ? 'selected' : ''}}>
                                                 {{ $i }}
                                                 </option>
