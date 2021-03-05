@@ -8,7 +8,13 @@
  */
 
 /* PERSO */
-html
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+body{
+    overflow-x: hidden;
+}
 h1, h2, h3, h4, h5, h6{
     font-family: 'Sanchez', serif;
     color: #22577A;
@@ -2944,6 +2950,21 @@ fieldset:disabled a.btn {
   border-color: #38c172;
 }
 
+.down-button-services {
+  height: 72px;
+  width: 72px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  margin: auto;
+  text-align: center;
+}
+
+.down-button-services img {
+  height: 72px;
+  width: 72px;
+}
 .btn-success:not(:disabled):not(.disabled):active,
 .btn-success:not(:disabled):not(.disabled).active,
 .show > .btn-success.dropdown-toggle {
@@ -11133,11 +11154,34 @@ h1.qsm {
     padding-top: 50px;
     padding-left: 55px !important;
 }
-
+.certifications{
+    background-color: #22577A;
+}
 .certifications img{
     width: 55%;
     display: inline-block;
     border-radius: 30px;
+}
+
+.bg-blue{
+    background-color: #22577A;
+    color: white;
+}
+.bg-vert{
+    background-color: #78BE14 !important;
+    color: white;
+}
+
+.boutoncart:hover{
+    background-color: white;
+    border: solid 1px blue;
+    color: white;
+}
+.roundeddroit{
+    border-radius: 0rem 0.2rem 0.2rem 0rem !important;
+}
+.roundedgauche{
+    border-radius: 0.2rem 0rem 0rem 0.2rem !important;
 }
 
 /* CSS de la page CONTACT */

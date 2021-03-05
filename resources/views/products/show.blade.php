@@ -3,7 +3,7 @@
     Nos Produits
 @endsection
 @section('content')
-<a href="{{route('products.index')}}" style="font-size: 25px; " class="btn "><i class="fas fa-arrow-left"> Retour</i></a>
+<a href="/produit#recherche-retour" style="font-size: 25px; " class="btn "><i class="fas fa-arrow-left pr-2"></i><span style="'font-family: Sanchez;">Retour</span></a>
 <div class="container mx-auto px-3 pt-10">
     <div class="row mb-2">
         <div class="col-md-12">
@@ -11,7 +11,7 @@
                 <div class="col p-4 d-flex flex-column position-static">
                     <h1 class="mb-0 text-4xl">{{$product->title}}</h1>
                     <p class="mb-8 text-xl">{{$product->getPrice()}}</p>
-                    <p class="mb-8 text-xl">{{$product->description}}</p>
+                    <p class="col-lg-9 pl-0 text-xl text-justify">{{$product->description}}</p>
                     <form action="{{ route('cart.store_product') }}" method="POST">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -33,7 +33,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <small>Posté le {{ $comment ->created_at->format('d/m/y ')}} par {{$comment->user->name}}</small>
                     @can('delete', $comment)
-                    <form action="{{route('comments.destroy', $comment)}}" method="POST"> 
+                    <form action="{{route('comments.destroy', $comment)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Supprimer</button>

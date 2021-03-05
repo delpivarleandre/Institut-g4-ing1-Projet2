@@ -13,23 +13,23 @@
     <div class="row col-lg-12 justify-content-center">
         <div class="col-lg-1 mb-4 mr-24 productsborder"></div>
     </div>
-        <div class="container">
-            <div class="row pt-16 col-lg-8 offset-lg-2">
-                <div class="col-lg-4">
-                    <img src="{{asset('/img/titreproduit.png')}}"/>
-                </div>
-                <div class="col-lg-8 text-justify">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus ut nisi turpis. Nullam tempor, nunc lacinia porttitor volutpat,
-                    sapien lectus pellentesque purus, sit amet pellentesque tellus nisl quis nulla.
-                    Morbi fringilla, dolor eu tristique suscipit, risus libero hendrerit velit,
-                    in pretium nibh mauris sit amet lacus. Morbi aliquet libero in diam mattis,
-                    et dignissim nisl ullamcorper. Etiam at tellus a ipsum gravida pulvinar ut vel sem.
-                    Sed molestie aliquam nibh, a volutpat ante fermentum et. Duis aliquet ac sem id eleifend.</p>
-                </div>
+    <section>
+        <div class="row pt-16 pb-8 justify-content-center align-items-center">
+            <div class="col-lg-3">
+                <img src="{{asset('/img/titrepres.png')}}" />
+            </div>
+            <div class="col-lg-5 text-justify">
+                <p class="paveservices">Éco-Services est une société créée en 2021 qui souhaite aller dans le sens de la transition écologique
+                    en vous proposant des produits de tout type avec pour principal atout leur éco-responsabilité.<br/> Nous proposont
+                    également des produits réutilisables, recyclés qui permettent de réduire au maximum votre empreinte carbone,
+                    tout en profitant de leur qualité et de leur durabilité.<br/>  Un large panel d'articles vous est mit à disposition,
+                    pour les besoins de tout un chacun :) <br />
+                </p>
             </div>
         </div>
-    <div class="container mx-auto px-6 pt-8">
+    </section>
+    
+    <div class="container mx-auto px-6 pt-8" id="recherche-retour">
         <div class="row col-lg-12 justify-content-center">
             <div class="col-lg-4 mb-4 font-italic text-lg">
                 <h2 class="text-center productstitle">Recherchez votre produit</h2>
@@ -69,9 +69,12 @@
                         </button>
                     </div>
                 </form>
-                <div class="pl-3 pr-5 py-3 mt-2">
-                    <a class="productstitle transition duration-500 ease uppercase nounderline hovergreen" href="{{route('products.show', $product)}}">{{$product->title}}</a><br/>
+                <div class="px-5 py-3">
+                    <a class="text-gray-700 uppercase " href="{{route('products.show', $product)}}">{{$product->title}}</a>
                     <span class="text-gray-500 mt-2">{{$product->getPrice()}}</span>
+                    @foreach($product->categories as $category)
+                    <span class="text-gray-500 mt-2">{{$category->name}}</span>
+                    @endforeach
                 </div>
             </div>
             @endforeach

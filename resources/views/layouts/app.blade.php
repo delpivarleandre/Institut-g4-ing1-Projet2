@@ -39,8 +39,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('acceuil.index') }}">Accueil <span class="sr-only">(current)</span></a>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ route('acceuil.index') }}">Accueil</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('presentation.index') }}">Présentation</a>
@@ -60,7 +60,7 @@
                     </li>
                     @endcan
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('projet.index') }}">Le projet</a>
+                        <a class="nav-link" href="{{ route('projet.index') }}">Notre équipe</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
