@@ -11146,8 +11146,8 @@ div.circle {
 /* CSS de la page d'ACCUEIL */
 
 h1.qsm {
-    margin-top: 100px;
-    margin-bottom: 100px;
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 .qsm-text {
