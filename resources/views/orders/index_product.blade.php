@@ -24,7 +24,7 @@
                         <div class="card mb-3">
                             <div class="card-header">
                                 Commande passé le {{Carbon\Carbon::parse
-                                ($order->payment_created_at)->format('d/m/Y à H:i')}}
+                                ($order->payment_created_at)->format('d/m/Y ')}}
                                 d'un montant de <strong>{{getPrice($order->amount)}}</strong>
                             </div>
                             <div class="card-body">

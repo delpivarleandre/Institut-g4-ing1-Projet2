@@ -21,7 +21,7 @@
                                         <div class="p-2 px-3 text-uppercase">Service</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Temps de location (en jours)</div>
+                                        <div class="py-2 text-uppercase">Temps de location (en jours) -> Environ 100€ la journée</div>
                                     </th>
                                 </tr>
                             </thead>

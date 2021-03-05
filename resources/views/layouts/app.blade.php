@@ -109,7 +109,7 @@
                                 @endcan
 
                                 @can('is_admin')
-                                <a href="{{route('admin.dashboard.index')}}" class="dropdown-item">Panel d'administration</a>
+                                <a href="{{route('admin.produits.index')}}" class="dropdown-item">Panel d'administration</a>
                                 @endcan
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">Déconnexion</a>
