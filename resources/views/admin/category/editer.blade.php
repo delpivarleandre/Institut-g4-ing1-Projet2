@@ -1,5 +1,8 @@
 @extends('layouts.panel')
 
+@section('title')
+    Modifier
+@endsection
 @section('content')
 
 <div class="container">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Inscription
+@endsection
 @section('content')
 <br>
 <div class="container">

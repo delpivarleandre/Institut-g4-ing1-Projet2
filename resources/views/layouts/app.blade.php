@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('extra-meta')
 
-    <title>Éco Services - </title>
+    <title>Éco Services - @yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -17,7 +17,8 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <script src="https://kit.fontawesome.com/ae6899135a.js" crossorigin="anonymous"></script>
 
 
@@ -55,6 +56,9 @@
                     </li>
                     @endcan
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('projet.index') }}">Le projet</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
                     </li>
                 </ul>
@@ -87,15 +91,15 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            
+
                                 @can('is_commercial')
                                 <a class="dropdown-item" href="{{ route('orders.index_devis') }}">Les devis</a>
                                 @endcan
-                                
+
                                 @can('is_pros')
                                 <a class="dropdown-item" href="{{ route('orders.index_service') }}">Mes commandes</a>
                                 @endcan
-                                
+
                                 @can('is_particuliers')
                                 <a class="dropdown-item" href="{{ route('orders.index_product') }}">Mes commandes</a>
                                 @endcan

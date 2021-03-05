@@ -40,6 +40,7 @@ class AjoutProductController extends Controller
         $data= $request->validate([
             'title' =>'required|min:1',
             'image'=>'required|min:1',
+            'description'=>'required|min:1',
             'price'=>'required',
             'cat'=>'required'
         ]);
@@ -86,6 +87,7 @@ class AjoutProductController extends Controller
         $data= $request->validate([
             'title' =>'required|min:5',
             'image'=>'required|min:1',
+            'description'=>'required|min:1',
             'price'=>'required|min:1',
             'cat'=>'required'
 

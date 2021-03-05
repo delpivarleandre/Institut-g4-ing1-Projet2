@@ -14,11 +14,18 @@
         .text-right {
             text-align: right;
         }
+       
     </style>
 
 </head>
 <body class="login-page" style="background: white">
-
+    <div class="circleServicesDroite">
+        <img/>
+    </div>
+    
+    <div class="circleServicesGauche">
+        <img/>
+    </div>
 <div>
     <div class="row">
         <div class="col-xs-7">
@@ -32,7 +39,7 @@
         </div>
 
         <div class="col-xs-4">
-            <img src="https://lh4.googleusercontent.com/1IsRIpCsgl6hUnN2U1pj83Fvx7k3w7RuHZfhM6Ie-QVM2Cbr5jObQhpRvr5ZdM4oN1eBtf9jpODl-KyhQsktHoUfda12M16D5C4OHJIT" alt="logo">
+            <img src="https://lh6.googleusercontent.com/xGNUT3krdhz46zeDsfHsKlS5kEIqxOcNzHO7TII2GeyHjxlCkgP8WaEq9N_EmLE8kNCbF6I5jym0yjse5q_bEjWZ8-8hpc24i_Lq8b7N" alt="logo">
         </div>
     </div>
 
@@ -66,7 +73,7 @@
             <table style="width: 100%; margin-bottom: 20px">
                 <tbody>
                 <tr class="well" style="padding: 5px">
-                    <th style="padding: 5px"><div> Commercial : </div></th>
+                    <th style="padding: 5px"><div> Commercial : Roger Duval</div></th>
                     <td style="padding: 5px" class="text-right"><strong> </strong></td>
                 </tr>
                 </tbody>
@@ -87,25 +94,10 @@
         <tr>
             <td class="text-left"><div><strong>Temps de location </strong></div>
                 <p>Vous louez ce service pour une durée de {{$jours}} jours.</p></td>
-            <td class="text-center">{{$jours}} x 10 €</td>
+            <td class="text-center">{{$jours}} x 10,00 €</td>
             <td class="text-center">20%</td>
-            <td class="text-right">{{$calcul_jours}} €</td>
+            <td class="text-right">{{$calcul_jours}},00 €</td>
         </tr>
-        <tr>
-            <td><div><strong>Taille</strong></div>
-                <p>Vous avez chosit la taille.</p></td>
-            <td class="text-center"></td>
-            <td class="text-center">20%</td>
-            <td class="text-right">30,00 €</td>
-        </tr>
-        <tr>
-            <td><div><strong>Emplacement</strong></div>
-                <p>Vous avez chosit l'emplacement.</p></td>
-            <td class="text-center"></td>
-            <td class="text-center">20%</td>
-            <td class="text-right">30,00 €</td>
-        </tr>
-        
         </tbody>
     </table>
 
@@ -116,12 +108,11 @@
                 <tbody>
                 <tr class="well" style="padding: 5px">
                     <th style="padding: 5px"><div> Total sans TVA</div></th>
-                    <td style="padding: 5px" class="text-right"><strong>{{$price_service}} </strong></td>
+                    <td style="padding: 5px" class="text-right"><strong>{{$calcul_jours}},00  €</strong></td>
                 </tr>
-                
                 <tr class="well" style="padding: 5px; margin-top:10px;">
                     <th style="padding: 5px"><div> Total </div></th>
-                    <td style="padding: 5px" class="text-right"><strong>{{$amount}} </strong></td>
+                    <td style="padding: 5px" class="text-right"><strong>{{$calcul_jours_tva}},00 € </strong></td>
                 </tr>
                 </tbody>
             </table>

@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Merci
+@endsection
 @section('content')
 
     <div class="col-md-12">
@@ -12,7 +14,7 @@
                 Vous rencontrez un problème ? <a href="{{route('contact.index')}}">Nous contactez</a>
             </p>
             <p class="lead">
-                <a class="btn btn-primary btn-sm" href="{{route('acceuil.index')}}" role="button"> Retour a l'acceuil</a>
+                <a class="btn btn-primary btn-sm" href="{{route('acceuil.index')}}" role="button"> Retour à l'accueil</a>
             </p>
         </div>
     </div>

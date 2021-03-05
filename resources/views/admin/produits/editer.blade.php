@@ -1,5 +1,7 @@
 @extends('layouts.panel')
-
+@section('title')
+    Modifier
+@endsection
 @section('content')
 
 <div class="container">
@@ -13,6 +15,13 @@
             <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value ="{{$product->title}}"></input>
             @error('title')
             <div class="invalid-feedback">{{$errors->first('title')}}</div>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="description">Description : </label>
+            <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="description" value ="{{$product->description}}"></input>
+            @error('description')
+            <div class="invalid-feedback">{{$errors->first('description')}}</div>
             @enderror
         </div>
 
