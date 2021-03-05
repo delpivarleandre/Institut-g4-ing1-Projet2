@@ -21,7 +21,7 @@
     $stripe_key = 'pk_test_51I0wFvAEUallKK3aIL2RXuwQcFBTKeWcBL1VWgsRoMGkhEOf7toFXOzBlD9pr6usRP3Y8GjVZtc09o5kh2UnUNZo00NHokebu8';
     @endphp
     <div class="container" style="margin-top:10%;margin-bottom:10%">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center bg-blue">
             <div class="col-md-12">
                 <form action="{{route('checkout.store_service')}}" method="post" id="payment-form">
                     @csrf
@@ -44,15 +44,15 @@
                             <input type="text" class="form-control" id="city" placeholder="Ville">
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="form-group">
-                            <div class="card-header">
-                                <label for="card-element">
+                    <div class="card bg-blue">
+                        <div class="form-group bg-blue">
+                            <div class="card-header bg-blue">
+                                <label for="card-element bg-blue">
                                 Saisissez les informations relatives à votre carte de crédit
                                 </label>
                             </div>
-                            <div class="card-body">
-                                <div id="card-element">
+                            <div class="card-body bg-blue">
+                                <div id="card-element bg-blue">
                                     <!-- A Stripe Element will be inserted here. -->
 
 
