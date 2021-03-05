@@ -1,6 +1,6 @@
 <footer class="footer relative pt-1">
     <div class="container mx-auto px-6">
-        <div class="sm:flex sm:mt-8 col-lg-8 offset-lg-2">
+        <div class="sm:flex sm:mt-8 col-lg-10 offset-lg-1">
             <div class="mt-8 sm:mt-0 sm:w-full sm:px-8 flex flex-col md:flex-row justify-between">
                 <div class="flex flex-col ">
                     <span class="font-bold text-gray-200 uppercase mt-4 md:mt-0 mb-2">Liens utiles</span>
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="container mx-auto px-6">
-        <div class="mt-16 border-t-2 border-gray-300 col-lg-8 offset-lg-2 flex flex-col items-center">
+        <div class="mt-16 border-t-2 border-gray-300 col-lg-10 offset-lg-1 flex flex-col items-center">
             <div class="sm:w-2/3 text-center py-6">
                 <p class="text-sm text-white font-bold mb-2">
                     &copy; Éco Services 2020 - <?php echo date("Y"); ?>

@@ -12,7 +12,7 @@
     <img/>
 </div>
 
-<main class="my-8">
+<main class="mt-8">
 
     <div class="md:container md:mx-auto">
 

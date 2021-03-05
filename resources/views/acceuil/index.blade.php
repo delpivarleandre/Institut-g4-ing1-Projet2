@@ -50,10 +50,10 @@
 
 
 -->
-    <div class="md:container md:mx-auto mb-16">
+    <div class="md:container md:mx-auto mb-16" id="presentation">
 
 
-        <h1 id="presentation" class="text-center qsm">Qui sommes-nous ?</h1>
+        <h1 class="text-center qsm">Qui sommes-nous ?</h1>
 
 
         <div class="row align-items-center">
