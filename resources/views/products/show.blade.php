@@ -3,7 +3,7 @@
     Nos Produits
 @endsection
 @section('content')
-<a href="{{route('products.index')}}" style="font-size: 25px; " class="btn "><i class="fas fa-arrow-left pr-2"></i><span style="'font-family: Sanchez;">Retour</span></a>
+<a href="/produit#recherche-retour" style="font-size: 25px; " class="btn "><i class="fas fa-arrow-left pr-2"></i><span style="'font-family: Sanchez;">Retour</span></a>
 <div class="container mx-auto px-3 pt-10">
     <div class="row mb-2">
         <div class="col-md-12">

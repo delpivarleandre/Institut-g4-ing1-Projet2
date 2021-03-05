@@ -15,10 +15,10 @@
                     <span class="my-2"><i style="color: white;" class="fab fa-twitter"></i>  <a class="text-md ">Twitter</a></span>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-bold text-gray-200 uppercase mt-4 md:mt-0 mb-2 text-right">Nous trouver</span>
+                    <span class="font-bold text-gray-200 uppercase mt-4 md:mt-0 mb-2">Nous trouver</span>
                     <span class="my-2"><a class="text-md float-right">Bâtiment Les Passerelles, 24 Avenue Joannès Masset, 69009 Lyon</a></span>
-                    <span class="my-2"><a href="tel:+33484250128" class="text-md float-right">04 84 25 01 28</a></span>
-                    <span class="my-2"><a href="mailto:eco.service.institut.g4@gmail.com" class="text-md hover:text-white float-right">eco.service.institut.g4@gmail.com</a></span>
+                    <span class="my-2"><a href="tel:+33484250128" class="text-md">04 84 25 01 28</a></span>
+                    <span class="my-2"><a href="mailto:eco.service.institut.g4@gmail.com" class="text-md hover:text-white">eco.service.institut.g4@gmail.com</a></span>
                 </div>
             </div>
         </div>

@@ -28,6 +28,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     @yield('extra-script')
+
+
+    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="135cffa1-6710-4ab2-8fe2-25922927879d";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+
 </head>
 
 <body>
@@ -35,8 +39,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('acceuil.index') }}">Accueil <span class="sr-only">(current)</span></a>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ route('acceuil.index') }}">Accueil</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('presentation.index') }}">Présentation</a>
@@ -56,7 +60,7 @@
                     </li>
                     @endcan
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('projet.index') }}">Le projet</a>
+                        <a class="nav-link" href="{{ route('projet.index') }}">Notre équipe</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>

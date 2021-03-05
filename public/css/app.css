@@ -2950,6 +2950,21 @@ fieldset:disabled a.btn {
   border-color: #38c172;
 }
 
+.down-button-services {
+  height: 72px;
+  width: 72px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  margin: auto;
+  text-align: center;
+}
+
+.down-button-services img {
+  height: 72px;
+  width: 72px;
+}
 .btn-success:not(:disabled):not(.disabled):active,
 .btn-success:not(:disabled):not(.disabled).active,
 .show > .btn-success.dropdown-toggle {
@@ -11147,9 +11162,7 @@ h1.qsm {
     display: inline-block;
     border-radius: 30px;
 }
-.containerservices{
-    background-color: #22577A;
-}
+
 .bg-blue{
     background-color: #22577A;
     color: white;
@@ -11604,4 +11617,38 @@ div.circleServicesGauche {
     font-size: 32px;
     line-height: 40px;
   }
+}
+
+#hero h1#brand{
+    color: white !important;
+}
+
+/* Portrait */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 852px) {
+    div.circle{
+        width: 280px;
+        height: 280px;
+    }
+    .imageRound{
+        width: 65%;
+    }
+    #app > main > div.md\:container.md\:mx-auto > div.row.certifications > div.col-sm-4.text-right{
+        text-align: center !important;
+    }
+    #app > main > div.md\:container.md\:mx-auto > div.row.certifications > div.col-sm-4.text-left{
+        text-align: center !important;
+    }
+    .certif {
+        margin-bottom: 15px;
+    }
+}
+
+
+@media (min-width: 328px) {
+
+    .navbar-expand-md .navbar-nav .nav-link {
+        display: block;
+    }
 }
