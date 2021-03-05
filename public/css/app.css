@@ -8,6 +8,17 @@
  */
 
 /* PERSO */
+html
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Sanchez', serif;
+    color: #22577A;
+}
+h3{
+    font-size: 20px;
+}
+h2{
+    font-size: 28px !important;
+}
 header.Page403 {
   height: 100vh;
   width: 100%;
@@ -53,6 +64,30 @@ header.Page404 {
   vertical-align: middle;
   /*filter: brightness(0.5);*/
 }
+.shadowbox {
+    border-radius: 20px;
+    transition: all 0.5s ease;
+}
+.shadowbox:hover{
+     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.30) !important;
+     transform: scale(1.1);
+}
+.paveservices{
+    padding-left: 15px;
+    padding-right: 15px;
+    border-left: #22577A solid 3px;
+    border-right: #22577A solid 3px;
+}
+.sectionpresa{
+    background-color: #22577A;
+    margin-top: 50px;
+    overflow-x: hidden;
+}
+.pavepresentation{
+    padding-top: 15px;
+    padding-bottom: 50px;
+    border-bottom: white solid 3px;
+}
 .productstitle{
     color: #22577A;
 }
@@ -85,9 +120,14 @@ header.Page404 {
 }
 .roundedborder{
     border-radius: 50%;
-    border: 10px solid #22577A;
-    box-shadow: 0 0 0 10px white inset;
     box-sizing: border-box;
+}
+.cerclespresa{
+    margin: 30px;
+}
+.imgpresa{
+    width: 200px !important;
+    height: 200px !important;
 }
 .buttonsbis {
     background-color: #22577A;
@@ -120,6 +160,18 @@ header.Page404 {
 }
 .titreproduitseul{
     height: 100px;
+}
+footer{
+    background-color: #78BE14;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+    transition: 0.5s all ease;
+}
+footer a:hover {
+    text-decoration: none;
+    color: #eeeded !important;
 }
 /* MAIN */
 
@@ -11025,17 +11077,15 @@ a.text-dark:focus {
 
 h1.text-center {
     color: #22577A;
-    font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     font-weight: 700;
+    font-size: 40px;
 }
 
 h2.text-center{
     color: #22577A;
-    font-family: 'Roboto', sans-serif;
     font-weight: 700;
     letter-spacing: 0.7;
-    margin-top: 100px;
 }
 
 .imageRound {

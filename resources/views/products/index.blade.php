@@ -14,8 +14,8 @@
         <div class="col-lg-1 mb-4 mr-24 productsborder"></div>
     </div>
         <div class="container">
-            <div class="row pt-16">
-                <div class="col-lg-2 ml-15">
+            <div class="row pt-16 col-lg-8 offset-lg-2">
+                <div class="col-lg-4">
                     <img src="{{asset('/img/titreproduit.png')}}"/>
                 </div>
                 <div class="col-lg-8 text-justify">
@@ -32,7 +32,7 @@
     <div class="container mx-auto px-6 pt-8">
         <div class="row col-lg-12 justify-content-center">
             <div class="col-lg-4 mb-4 font-italic text-lg">
-                <h1 class="text-center productstitle">Recherchez votre produit</h1>
+                <h2 class="text-center productstitle">Recherchez votre produit</h2>
             </div>
         </div>
         <div class="row col-lg-12 justify-content-center">
@@ -57,7 +57,7 @@
         </div>
         <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
             @foreach ($products as $product)
-            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md shadowbox overflow-hidden">
                 <form action="{{ route('cart.store_product') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
