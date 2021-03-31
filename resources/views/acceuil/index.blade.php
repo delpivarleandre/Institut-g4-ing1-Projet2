@@ -213,7 +213,6 @@ function showDownButton() {
           }
         };
       }
-
       // Loop the animation function
       var runAnimation = setInterval(animateScroll, 16);
     };
